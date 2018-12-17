@@ -15,10 +15,8 @@ public class Project
 		String driverName="com.mysql.cj.jdbc.Driver";
 		try{
 		       Class.forName(driverName);
-		       System.out.println("ok");
 		}catch(ClassNotFoundException e){
 		    	e.printStackTrace();
-		    	System.out.println("false");
 		}
 		//连接数据库
 
@@ -29,27 +27,25 @@ public class Project
 		try {
 			con = DriverManager.getConnection(url,un,pw);
 			Statement statement=con.createStatement();
-			System.out.println("3");
-			String searchSex = "select XingBie from xuesheng where Xuehao = "+stuID;
+			String searchSex = "select XingBie from student_xuesheng where Xuehao = "+stuID+";";
 			ResultSet reasultSearchSex=statement.executeQuery(searchSex);
 			String deleteProjectOfSex = "";
 			if(reasultSearchSex.next())
 			{
 				String sex = reasultSearchSex.getString("XingBie");	
-				if(sex.equals("W"))
-					deleteProjectOfSex = "M";
+				if(sex.equals("男"))
+					deleteProjectOfSex = "女";
 				else
-					deleteProjectOfSex = "W";
-				System.out.println(deleteProjectOfSex);
+					deleteProjectOfSex = "男";
 			}
 			//对所有比赛项目进行筛选
-			String searchSqlRoad = "select * from xiangmu";
+			String searchSqlRoad = "select * from item_xiangmu";
 			ResultSet reasultSearch=statement.executeQuery(searchSqlRoad);
 			while(reasultSearch.next()){
 				
-				String XiangBieXZ=reasultSearch.getString("XiangBieXZ");
+				String XingBieXZ=reasultSearch.getString("XingBieXZ");
 				
-				if(!XiangBieXZ.equals(deleteProjectOfSex))
+				if(!XingBieXZ.equals(deleteProjectOfSex))
 				{
 					//与比赛性别要求一致或者比赛没有要求性别
 					ArrayList<String> list = new ArrayList<String>();
@@ -61,23 +57,20 @@ public class Project
 					list.add(XiangMuMC);
 					
 					//将字符转为性别要求
-					if(XiangBieXZ.equals("W"))
-						XiangBieXZ = "女";
-					else if(XiangBieXZ.equals("M"))
-						XiangBieXZ = "男";
+					if(XingBieXZ.equals("女"))
+						XingBieXZ = "女";
+					else if(XingBieXZ.equals("男"))
+						XingBieXZ = "男";
 					else
-						XiangBieXZ = "无限制";
-					list.add(XiangBieXZ);
+						XingBieXZ = "无";
+					list.add(XingBieXZ);
 					
 					String XiaoJiL=reasultSearch.getString("XiaoJiL");
 					list.add(XiaoJiL);
 				
 					Date BiSaiSJ =reasultSearch.getDate("BiSaiSJ");
 					list.add(BiSaiSJ+"");
-					
-					//测试
-					System.out.println(list.toString());
-					
+				
 					list2.add(list);
 				}
 			}
@@ -88,9 +81,9 @@ public class Project
 		return list2;
 	}
 	
-	public static void pushProject(ArrayList<ArrayList<String>> list2)
+	public static void pushProject(ArrayList<String> list,String stuId)
 	{
-		String driverName="com.mysql.jdbc.Driver";
+		String driverName="com.mysql.cj.jdbc.Driver";
 		try{
 		       Class.forName(driverName);
 		}catch(ClassNotFoundException e){
@@ -104,26 +97,43 @@ public class Project
 			//循环将数据插入到数据库中
 			Connection con=DriverManager.getConnection(url,un,pw);
 			Statement statement=con.createStatement();
-			for(ArrayList<String> li:list2)
+			
+			if(list.size()==1)
 			{
-				String insertRow = "insert into entryForm values(";
-				int size = li.size();
-				int i = 0;
-				for(String str:li)
-				{
-					insertRow +=str;
-					if(i!=size-1)
-						insertRow+=",";
-					else
-						insertRow+=");";
-					i++;
-				}
+				String insertRow = "insert into student_baoming(XueHao,BaoMingXM1) values(\""+stuId+"\",\""+list.get(0)+"\");";
 				statement.executeUpdate(insertRow);
-				System.out.println("insert ok");
+			}
+			else
+			{
+				String insertRow = "insert into student_baoming values(\""+stuId+"\",\""+list.get(0)+"\",\""+list.get(1)+"\");";
+				statement.executeUpdate(insertRow);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public static void main(String []args)
+	{
+//		//pullProject test
+//		ArrayList<ArrayList<String>> list2 = pullProject("105032016081");
+//		System.out.println("XiangMuBH\tXiangMuMC\tXingBieXZ\tXiaoJiL\tBiSaiSJ");
+//		for(ArrayList<String> list:list2)
+//		{
+//			for(String s:list)
+//			{
+//				System.out.print(s+"\t");
+//			}
+//			System.out.print("\n");
+//		}
+		//pushProject test
+		ArrayList<String> list1 = new ArrayList<String>();
+		list1.add("0011");
+		pushProject(list1,"105032016121");
+		
+		ArrayList<String> list2 = new ArrayList<String>();
+		list2.add("0011");
+		list2.add("0012");
+		pushProject(list2,"105032016111");
 	}
 }
