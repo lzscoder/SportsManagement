@@ -12,17 +12,19 @@
 
 <h1>运动员管理系统</h1> <br/> <br/>
 <table width="1000" bgcolor="#FFFFFF"border="0"  cellpadding="0" cellspacing="0">
-  <tr bgcolor="#804040"  >
+  <tr bgcolor="#804040">
     <td><table border="0" cellspacing="0" cellpadding="0" class="nav">
   <tr>
-    <td width="150" height="45" align="center" valign="middle"><a href="index_sport.jsp">赛事概况</a></td>
-    <td width="150" height="45" align="center" valign="middle"><a href="signup_sport.jsp">赛事报名</a></td>
-    <td width="150" height="45" align="center" valign="middle"><a href="">个人比赛详情</a></td>
-    <td width="150" height="45" align="center" valign="middle"><a href="">成绩查询</a></td>
-    <td width="150" height="45" align="center" valign="middle"><a href="login.jsp">退出系统</a></td>
+    <td width="95" height="45" align="center" valign="middle"><a href="index_Aadmin.jsp">赛事概况</a></td>
+    <td width="95" height="45" align="center" valign="middle"><a href="">赛程安排</a></td>
+    <td width="95" height="45" align="center" valign="middle"><a href="">项目安排</a></td>
+    <td width="95" height="45" align="center" valign="middle"><a href="">报名情况</a></td>
+    <td width="95" height="45" align="center" valign="middle"><a href="">运动员信息</a></td>
+    <td width="95" height="45" align="center" valign="middle"><a href="">成绩录入</a></td>
+    <td width="95" height="45" align="center" valign="middle"><a href="">成绩榜</a></td>
+    <td width="95" height="45" align="center" valign="middle"><a href="login.jsp">退出系统</a></td>
   </tr>
 </table>
-
 </td>
   </tr>
   <tr>
