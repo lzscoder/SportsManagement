@@ -73,9 +73,9 @@
 							response.sendRedirect("index_sport.jsp");
 						}
 						else if("xueyuan".equals(mItem)) {
-							response.sendRedirect("index_admin.jsp");
+							response.sendRedirect("index_Badmin.jsp");
 						}else if("xuexiao".equals(mItem)) {
-							response.sendRedirect("index_xuexiao.jsp");
+							response.sendRedirect("index_Aadmin.jsp");
 						}
 					}
 					else {

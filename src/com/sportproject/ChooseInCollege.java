@@ -13,7 +13,7 @@ public class ChooseInCollege {
 			Connection con = DBConnection.getConnection();
 			String sql1="select XueHao,XingMing,ZhuanYe,NianJi,BanJi from student_xuesheng"
 					+" where XueHao IN (select XueHao from student_BaoMing where (BaoMingXM1='"
-					+XiangMuBH+"' or BaoMingXM2 = '"+XiangMuBH+"') and XueHao like in '"+UserName+"%')";
+					+XiangMuBH+"' or BaoMingXM2 = '"+XiangMuBH+"') and XueHao like  '"+UserName+"%')";
 			Statement statement=con.createStatement();
 			ResultSet rs=statement.executeQuery(sql1);
 			while(rs.next()) {
