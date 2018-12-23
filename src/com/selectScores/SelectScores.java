@@ -84,7 +84,7 @@ public class SelectScores {
 			Statement statement=con.createStatement();
 			
 			//先查找个人成绩
-			String selectscoresofGeren = "select XingMing,XiangMuMC,ChengJi from student_xuesheng,score_geren,item_xiangmu,student_yundongy where (score_geren.XiangMuBH = item_xiangmu.XiangMuBH) and (student_xuesheng.XueHao = student_yundongy.XueHao) and (student_yundongy.YunDongYBH = score_geren.YunDongYBH);";
+			String selectscoresofGeren = "select XingMing,XiangMuMC,ChengJi,PaiMing,JiFen from student_xuesheng,score_geren,item_xiangmu,student_yundongy where (score_geren.XiangMuBH = item_xiangmu.XiangMuBH) and (student_xuesheng.XueHao = student_yundongy.XueHao) and (student_yundongy.YunDongYBH = score_geren.YunDongYBH);";
 			ResultSet reasultSearch=statement.executeQuery(selectscoresofGeren);
 			
 			//查询的结果依次分别为 XingMing,XiangMuMC,ChengJi
@@ -94,12 +94,14 @@ public class SelectScores {
 				list.add(reasultSearch.getString("XingMing"));
 				list.add(reasultSearch.getString("XiangMuMC"));
 				list.add(reasultSearch.getString("ChengJi"));
+				list.add(reasultSearch.getString("PaiMing"));
+				list.add(reasultSearch.getString("JiFen"));
 				list2.add(list);
 			}
 			//select XueYuanMC,XiangMuMC,ChengJi from item_xiangmu,score_tuanti,college_xueyuan where (item_xiangmu.XiangmuBH = score_tuanti.XiangMuBH and score_tuanti.XueYuanBH = college_xueyuan.XueYuanBH);
 			//再查找团体成绩
 			
-			String selectscoresofTuanti = "select XueYuanMC,XiangMuMC,ChengJi from item_xiangmu,score_tuanti,college_xueyuan where (item_xiangmu.XiangmuBH = score_tuanti.XiangMuBH and score_tuanti.XueYuanBH = college_xueyuan.XueYuanBH);";
+			String selectscoresofTuanti = "select XueYuanMC,XiangMuMC,ChengJi,PaiMing,JiFen from item_xiangmu,score_tuanti,college_xueyuan where (item_xiangmu.XiangmuBH = score_tuanti.XiangMuBH and score_tuanti.XueYuanBH = college_xueyuan.XueYuanBH);";
 			reasultSearch=statement.executeQuery(selectscoresofTuanti);
 			
 			//查询的结果依次分别为 XingMing,XiangMuMC,ChengJi
@@ -109,6 +111,8 @@ public class SelectScores {
 				list.add(reasultSearch.getString("XueYuanMC"));
 				list.add(reasultSearch.getString("XiangMuMC"));
 				list.add(reasultSearch.getString("ChengJi"));
+				list.add(reasultSearch.getString("PaiMing"));
+				list.add(reasultSearch.getString("JiFen"));
 				list2.add(list);
 			}
 			

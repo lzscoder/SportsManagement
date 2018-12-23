@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="com.ChaKanSaiCheng.*" %>
+     <%@  page  import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +13,9 @@
 <body>
 
 <%
-
+String userName = (String )session.getAttribute("USERNAME");
+ArrayList<ArrayList<String>> list = ChaKanGeRenXiangMu.viewPersonalItems(userName);
+ArrayList<ArrayList<String>> list1 = ChaKanGeRenXiangMu.getInformation(userName);
  %>
 <h1>运动员管理系统</h1> <br/> <br/>
 <table width="1000" bgcolor="#FFFFFF"border="0" cellpadding="0" cellspacing="0">
@@ -38,23 +42,24 @@
 </table><br/>
 
 <table border="2" width="1000" >
+<%for (int i=0;i<list1.size();i++) {%>
 <tr>
 <td align="center" bgcolor="#b64747" width="200px">学院</td>
-<td align="center" width="200px">数学与信息学院</td>
+<td align="center" width="200px"><%=list1.get(i).get(0) %></td>
 <td align="center" bgcolor="#b64747" width="200px">专业</td>
-<td align="center" width="200px">计算机科学与技术</td>
+<td align="center" width="200px"><%=list1.get(i).get(1) %></td>
 <td align="center"bgcolor="#b64747" width="100px">年级</td>
-<td align="center" width="100px">大二</td>
+<td align="center" width="100px"><%=list1.get(i).get(2) %></td>
 </tr>
 <tr>
 <td align="center" bgcolor="#b64747" width="200px">运动员编号</td>
-<td align="center" width="200px">105114514</td>
+<td align="center" width="200px"><%=list1.get(i).get(3) %></td>
 <td align="center" bgcolor="#b64747" width="200px">学号</td>
-<td align="center" width="200px">105032016104</td>
+<td align="center" width="200px"><%=list1.get(i).get(4) %></td>
 <td align="center"bgcolor="#b64747" width="100px">姓名</td>
-<td align="center" width="100px">小墨</td>
+<td align="center" width="100px"><%=list1.get(i).get(5) %></td>
 </tr>
-
+<%} %>
 
 </table>
 <table border="2" width="1000" >
@@ -65,13 +70,13 @@
 <td align="center"width="100px">序号</td>
 <td align="center"width="200px">比赛场地</td>
 </tr>
-<%for(int i=0;i<3;i++){%>
+<%for(int i=0;i<list.size();i++){%>
 <tr >
-<td align="center"width="400px">2018-12-1 8:00-9:00</td>
-<td align="center"width="200px">男子100米 </td>
-<td align="center"width="100px">2 </td>
-<td align="center"width="100px">5 </td>
-<td align="center"width="200px">东区田径场 </td>
+<td align="center"width="400px"><%=list.get(i).get(6) %></td>
+<td align="center"width="200px"><%=list.get(i).get(1) %></td>
+<td align="center"width="100px"><%=list.get(i).get(4) %> </td>
+<td align="center"width="100px"><%=list.get(i).get(5) %> </td>
+<td align="center"width="200px"><%=list.get(i).get(7) %> </td>
 </tr>
 <%}%>
 </table><br/><br/>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ page import="com.selectScores.*" %>
+     <%@  page  import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +13,7 @@
 <body>
 
 <%
-
+ArrayList<ArrayList<String>> list = SelectScores.ColleageSelectScore();
  %>
 <h1>运动员管理系统</h1> <br/> <br/>
 <table width="1000" bgcolor="#FFFFFF"border="0" cellpadding="0" cellspacing="0">
@@ -47,19 +49,17 @@
 </tr>
 </thead>
 <tbody>
-<%for(int i=0;i<1;i++){%>
+<%for(int i=0;i<list.size();i++){%>
 <tr >
-<td align="center"width="400px">男子100米</td>
-<td align="center"width="200px">11.24</td>
-<td align="center"width="100px">1</td>
-<td align="center"width="100px">9</td>
+<td align="center"width="400px"><%=list.get(i).get(1) %></td>
+<td align="center"width="200px"><%=list.get(i).get(2) %></td>
+<td align="center"width="100px"><%=list.get(i).get(3) %></td>
+<td align="center"width="100px"><%=list.get(i).get(4) %></td>
 </tr>
 </tbody>
 <%}%>
 <tfoot>
- <tr>
- <td colspan="3" align="center"bgcolor="#b64747">总分</td>
- <td align="center">9</td>
+ 
 </tfoot>
 </table><br/><br/>
   

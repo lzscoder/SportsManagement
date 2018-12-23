@@ -49,4 +49,32 @@ public class ChaKanGeRenXiangMu {
 		}
 		return list;
 	}
+	
+	public static ArrayList<ArrayList<String>>	getInformation(String StudentID) {
+		ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>>();
+		Connection con;
+		try {
+			con = DBConnection.getConnection();
+			String sql = "select * from college_xueyuan,student_xuesheng,student_yundongy where "
+					+ "(student_xuesheng.XueYuan=college_xueyuan.XueYuanBH) and (student_xuesheng.XueHao=student_yundongy.XueHao) "
+					+ "and student_xuesheng.XueHao='105032016081' ";
+			Statement statement = con.createStatement();
+			ResultSet rs = statement.executeQuery(sql);
+			while (rs.next()) {
+				ArrayList<String> l = new ArrayList<String>();
+				l.add(rs.getString("XueYuanMC"));
+				l.add(rs.getString("ZhuanYe"));
+				l.add(rs.getString("NianJi"));
+				l.add(rs.getString("YunDongYBH"));
+				l.add(rs.getString("XueHao"));
+				l.add(rs.getString("XingMing"));
+				list.add(l);
+			}
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

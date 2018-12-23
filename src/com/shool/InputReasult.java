@@ -11,18 +11,19 @@ import com.geotest.DBConnection;
 
 public class InputReasult {
 
-	// xuehao  xueyuanMC xingming  
+	// yundongYBH  xueyuanMC xingming  
 	public static ArrayList<ArrayList<String>> getListGR (String XiangMuBH) {
 		ArrayList<ArrayList<String>> list= new ArrayList<ArrayList<String>>();
 		try {
 			Connection con = DBConnection.getConnection();
-			String sql = "select XueHao,XueYuan,XingMing from student_xuesheng,student_baoming where (student_xuesheng.XueHao=student_baoming.XueHao) and "
-					+ "((BaoMingXM1='"+XiangMuBH+"' and XiangMu1TG=1) or (BaoMingXM2='"+XiangMuBH+"' and XiangMu2TG=1))";
+			String sql = "select YunDongYBH,XueYuanMC,XingMing from student_xuesheng,student_baoming,student_yundongy,college_xueyuan where (student_baoming.XueHao=student_yundongy.XueHao) and "
+					+ "(student_xuesheng.XueHao=student_baoming.XueHao) and "
+					+ "((BaoMingXM1='"+XiangMuBH+"' and XiangMu1TG=1) or (BaoMingXM2='"+XiangMuBH+"' and XiangMu2TG=1)) and XueYuan=XueYuanBH order by YunDongYBH";
 			Statement statement=con.createStatement();
 			ResultSet rs=statement.executeQuery(sql);
 			while(rs.next()) {
 				ArrayList<String> l = new ArrayList<String>();
-				l.add(rs.getString("XueHao"));
+				l.add(rs.getString("YunDongYBH"));
 				l.add(rs.getString("XueYuanMC"));
 				l.add(rs.getString("XingMing"));
 				list.add(l);
@@ -38,7 +39,7 @@ public class InputReasult {
 		ArrayList<ArrayList<String>> list= new ArrayList<ArrayList<String>>();
 		try {
 			Connection con = DBConnection.getConnection();
-			String sql = "select XueYuanBH,XueYuanMC from college_xueyuan";
+			String sql = "select XueYuanBH,XueYuanMC from college_xueyuan order by XueYuanBH";
 			Statement statement=con.createStatement();
 			ResultSet rs=statement.executeQuery(sql);
 			while(rs.next()) {

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@  page  import="com.sportproject.*" %>
+ <%@  page  import="com.college.*" %>
   <%@  page  import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
@@ -16,6 +17,7 @@
 
 String UserName = (String) session.getAttribute("USERNAME");
 String spitem = request.getParameter("sportitem");
+ArrayList<ArrayList<String>> list = RaceList.getRaceList(spitem, UserName);
  %>
 <h1>运动员管理系统</h1> <br/> <br/>
 <table width="1000" bgcolor="#FFFFFF"border="0" cellpadding="0" cellspacing="0">
@@ -42,19 +44,21 @@ String spitem = request.getParameter("sportitem");
 <table border="2" width="1000" >
 <tr>
 <tr bgcolor="#b64747">
-<td align="center"width="400">学号</td>
-<td align="center"width="400">专业</td>
-<td align="center"width="50">年级</td>
-<td align="center"width="50">班级</td>
-<td align="center"width="100">姓名</td>
+<td align="center">运动员编号</td>
+<td align="center">学号</td>
+<td align="center">专业</td>
+<td align="center">年级</td>
+<td align="center">班级</td>
+<td align="center">姓名</td>
 </tr>
-<%for(int i=0;i<1;i++){%>
+<%for(int i=0;i<list.size();i++){%>
 <tr>
-<td align="center"width="400">105032016104</td>
-<td align="center"width="400">计算机科学与技术 </td>
-<td align="center"width="50">大二</td>
-<td align="center"width="50">2 </td>
-<td align="center"width="100">小明</td>
+<td align="center"><%=list.get(i).get(0) %></td>
+<td align="center"><%=list.get(i).get(1) %></td>
+<td align="center"><%=list.get(i).get(4) %></td>
+<td align="center"><%=list.get(i).get(3) %></td>
+<td align="center"><%=list.get(i).get(5) %></td>
+<td align="center"><%=list.get(i).get(2) %></td>
 
 </tr>
 <%}%>
