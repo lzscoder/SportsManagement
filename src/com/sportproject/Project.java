@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
+
+import com.geotest.DBConnection;
 public class Project 
 {
 	public static ArrayList<ArrayList<String>> pullProject(String stuID)
@@ -18,14 +20,14 @@ public class Project
 		}catch(ClassNotFoundException e){
 		    	e.printStackTrace();
 		}
-		//Á¬½ÓÊý¾Ý¿â
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
 
-		String  url="jdbc:mysql://localhost:3306/sportsmanagement?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
-		String  un="root";
-		String  pw="123456";
+//		String  url="jdbc:mysql://localhost:3306/sportsmanagement?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
+//		String  un="root";
+//		String  pw="123456";
 		Connection con;
 		try {
-			con = DriverManager.getConnection(url,un,pw);
+			con = DBConnection.getConnection();
 			Statement statement=con.createStatement();
 			String searchSex = "select XingBie from student_xuesheng where Xuehao = "+stuID+";";
 			ResultSet reasultSearchSex=statement.executeQuery(searchSex);
@@ -33,12 +35,12 @@ public class Project
 			if(reasultSearchSex.next())
 			{
 				String sex = reasultSearchSex.getString("XingBie");	
-				if(sex.equals("ÄÐ"))
+				if(sex.equals("ï¿½ï¿½"))
 					deleteProjectOfSex = "Å®";
 				else
-					deleteProjectOfSex = "ÄÐ";
+					deleteProjectOfSex = "ï¿½ï¿½";
 			}
-			//¶ÔËùÓÐ±ÈÈüÏîÄ¿½øÐÐÉ¸Ñ¡
+			//ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½É¸Ñ¡
 			String searchSqlRoad = "select * from item_xiangmu";
 			ResultSet reasultSearch=statement.executeQuery(searchSqlRoad);
 			while(reasultSearch.next()){
@@ -47,7 +49,7 @@ public class Project
 				
 				if(!XingBieXZ.equals(deleteProjectOfSex))
 				{
-					//Óë±ÈÈüÐÔ±ðÒªÇóÒ»ÖÂ»òÕß±ÈÈüÃ»ÓÐÒªÇóÐÔ±ð
+					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½Òªï¿½ï¿½Ò»ï¿½Â»ï¿½ï¿½ß±ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Òªï¿½ï¿½ï¿½Ô±ï¿½
 					ArrayList<String> list = new ArrayList<String>();
 					
 					String XiangMuBH=reasultSearch.getString("XiangMuBH");
@@ -56,13 +58,13 @@ public class Project
 					String XiangMuMC=reasultSearch.getString("XiangMuMC");
 					list.add(XiangMuMC);
 					
-					//½«×Ö·û×ªÎªÐÔ±ðÒªÇó
+					//ï¿½ï¿½ï¿½Ö·ï¿½×ªÎªï¿½Ô±ï¿½Òªï¿½ï¿½
 					if(XingBieXZ.equals("Å®"))
 						XingBieXZ = "Å®";
-					else if(XingBieXZ.equals("ÄÐ"))
-						XingBieXZ = "ÄÐ";
+					else if(XingBieXZ.equals("ï¿½ï¿½"))
+						XingBieXZ = "ï¿½ï¿½";
 					else
-						XingBieXZ = "ÎÞ";
+						XingBieXZ = "ï¿½ï¿½";
 					list.add(XingBieXZ);
 					
 					String XiaoJiL=reasultSearch.getString("XiaoJiL");
@@ -89,13 +91,13 @@ public class Project
 		}catch(ClassNotFoundException e){
 		    	e.printStackTrace();
 		}
-		//Á¬½ÓÊý¾Ý¿â
-		String  url="jdbc:mysql://localhost:3306/sportsmanagement?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
-		String  un="root";
-		String  pw="123456";
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
+//		String  url="jdbc:mysql://localhost:3306/sportsmanagement?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
+//		String  un="root";
+//		String  pw="123456";
 		try {
-			//Ñ­»·½«Êý¾Ý²åÈëµ½Êý¾Ý¿âÖÐ
-			Connection con=DriverManager.getConnection(url,un,pw);
+			//Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ëµ½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½
+			Connection con=DBConnection.getConnection();
 			Statement statement=con.createStatement();
 			
 			if(list.size()==1)

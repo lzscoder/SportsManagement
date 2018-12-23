@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.geotest.DBConnection;
+
 
 
 
@@ -26,15 +28,15 @@ public class SelectScores {
 		    	e.printStackTrace();
 		}
 		
-		String  url="jdbc:mysql://localhost:3306/sportsmanagement?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
-		String  un="root";
-		String  pw="123456";
+//		String  url="jdbc:mysql://localhost:3306/sportsmanagement?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
+//		String  un="root";
+//		String  pw="123456";
 		
 		
 		ArrayList<ArrayList<String>> list2 = new ArrayList<ArrayList<String>>();
 		Connection con;
 		try {
-			con = DriverManager.getConnection(url,un,pw);
+			con = DBConnection.getConnection();
 			Statement statement=con.createStatement();
 			
 			//先查找个人成绩
@@ -70,15 +72,15 @@ public class SelectScores {
 		    	e.printStackTrace();
 		}
 		
-		String  url="jdbc:mysql://localhost:3306/sportsmanagement?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
-		String  un="root";
-		String  pw="123456";
+//		String  url="jdbc:mysql://localhost:3306/sportsmanagement?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
+//		String  un="root";
+//		String  pw="123456";
 		
 		
 		ArrayList<ArrayList<String>> list2 = new ArrayList<ArrayList<String>>();
 		Connection con;
 		try {
-			con = DriverManager.getConnection(url,un,pw);
+			con = DBConnection.getConnection();
 			Statement statement=con.createStatement();
 			
 			//先查找个人成绩

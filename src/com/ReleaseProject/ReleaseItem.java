@@ -1,4 +1,4 @@
-package ReleaseProject;
+package com.ReleaseProject;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,8 +11,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.geotest.DBConnection;
+
 public class ReleaseItem {
-	public static ArrayList<ArrayList<String>> getItem() { // »ñÈ¡ËùÓÐÏîÄ¿
+	public static ArrayList<ArrayList<String>> getItem() { // ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿
 		ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>>();
 		String driverName = "com.mysql.cj.jdbc.Driver";
 		try {
@@ -20,12 +22,12 @@ public class ReleaseItem {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		String url = "jdbc:mysql://localhost:3306/sportsmanagement?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
-		String un = "root";
-		String pw = "123456";
+//		String url = "jdbc:mysql://localhost:3306/sportsmanagement?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
+//		String un = "root";
+//		String pw = "123456";
 		Connection con;
 		try {
-			con = DriverManager.getConnection(url, un, pw);
+			con = DBConnection.getConnection();
 			String sql = "select * from item_xiangmu";
 			Statement statement = con.createStatement();
 			ResultSet rs = statement.executeQuery(sql);
@@ -50,7 +52,7 @@ public class ReleaseItem {
 
 	}
 
-	public static void releaseItem(String XiangMuBH, String XiangMuMC, String XingBieXZ, String XiaoJiL, String ZuiDaRL,		//Ìí¼ÓÏîÄ¿
+	public static void releaseItem(String XiangMuBH, String XiangMuMC, String XingBieXZ, String XiaoJiL, String ZuiDaRL,		//ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿
 			String YiBaoMRS, String BiSaiSJ, String BiSaiDD) {
 		String driverName = "com.mysql.cj.jdbc.Driver";
 		try {
@@ -58,12 +60,12 @@ public class ReleaseItem {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		String url = "jdbc:mysql://localhost:3306/sportsmanagement?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
-		String un = "root";
-		String pw = "123456";
+//		String url = "jdbc:mysql://localhost:3306/sportsmanagement?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
+//		String un = "root";
+//		String pw = "123456";
 		Connection con;
 		try {
-			con = DriverManager.getConnection(url, un, pw);
+			con = DBConnection.getConnection();
 			String sql = "insert into item_XiangMu values(?,?,?,?,?,?,?,?)";
 			PreparedStatement temp = con.prepareStatement(sql);
 			int xbxz = Integer.parseInt(XingBieXZ);

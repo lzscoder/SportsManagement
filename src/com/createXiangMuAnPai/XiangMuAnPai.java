@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import com.geotest.DBConnection;
+
 public class XiangMuAnPai {
 	
 	
@@ -24,9 +26,9 @@ public class XiangMuAnPai {
 		    	e.printStackTrace();
 		}
 		
-		String  url="jdbc:mysql://localhost:3306/sportsmanagement?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
-		String  un="root";
-		String  pw="123456";
+//		String  url="jdbc:mysql://localhost:3306/sportsmanagement?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
+//		String  un="root";
+//		String  pw="123456";
 		
 		//首先是田赛的安排,直接使用报名顺序就OK
 		//list2用来存储田赛的项目，以及序号的安排
@@ -35,7 +37,7 @@ public class XiangMuAnPai {
 		Connection con;
 		try {
 			//打开与数据库的链接
-			con = DriverManager.getConnection(url,un,pw);
+			con = DBConnection.getConnection();
 			Statement statement=con.createStatement();
 			
 			//先查找student_baoming.BaoMingXM1中为田赛的项目

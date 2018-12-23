@@ -1,4 +1,4 @@
-package ChaKanSaiCheng;
+package com.ChaKanSaiCheng;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,8 +7,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.geotest.DBConnection;
+
 public class ChaKanSaiCheng {
-	public static ArrayList<ArrayList<String>> getSchedule() { // »ñÈ¡Èü³Ì
+	public static ArrayList<ArrayList<String>> getSchedule() { // ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
 		ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>>();
 		String driverName = "com.mysql.cj.jdbc.Driver";
 		try {
@@ -16,12 +18,12 @@ public class ChaKanSaiCheng {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		String url = "jdbc:mysql://localhost:3306/sportsmanagement?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
-		String un = "root";
-		String pw = "123456";
+//		String url = "jdbc:mysql://localhost:3306/sportsmanagement?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
+//		String un = "root";
+//		String pw = "123456";
 		Connection con;
 		try {
-			con = DriverManager.getConnection(url, un, pw);
+			con = DBConnection.getConnection();
 			String sql = "select item_saicheng.XiangMuBH,item_xiangmu.XiangMuMC,item_saicheng.YunDongYBH,student_xuesheng.XingMing,item_saicheng.ZuBie,item_saicheng.XuHao,item_xiangmu.BiSaiSJ,item_xiangmu.BiSaiDD\r\n"
 					+ "	from item_saicheng,item_xiangmu,student_yundongy,student_xuesheng\r\n"
 					+ "	where item_xiangmu.XiangMuBH=item_saicheng.XiangMuBH and item_saicheng.YunDongYBH=student_yundongy.YunDongYBH and student_yundongy.XueHao=student_xuesheng.XueHao\r\n"

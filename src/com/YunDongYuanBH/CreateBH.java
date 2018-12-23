@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.geotest.DBConnection;
+
 public class CreateBH {
 	
 	public static ArrayList<ArrayList<String>> create()
@@ -17,14 +19,14 @@ public class CreateBH {
 		}catch(ClassNotFoundException e){
 		    	e.printStackTrace();
 		}
-		//Á¬½ÓÊý¾Ý¿â
-		String  url="jdbc:mysql://localhost:3306/sportsmanagement?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
-		String  un="root";
-		String  pw="123456";
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
+//		String  url="jdbc:mysql://localhost:3306/sportsmanagement?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
+//		String  un="root";
+//		String  pw="123456";
 		ArrayList<ArrayList<String>> list2 = new ArrayList<ArrayList<String>>();
 		try {
-			//Ñ­»·½«Êý¾Ý²åÈëµ½Êý¾Ý¿âÖÐ
-			Connection con=DriverManager.getConnection(url,un,pw);
+			//Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ëµ½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½
+			Connection con=DBConnection.getConnection();
 			Statement statement=con.createStatement();
 			String selectXueHao = "select XueHao from student_baoming;";
 			ResultSet reasultSearch=statement.executeQuery(selectXueHao);
