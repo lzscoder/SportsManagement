@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>项目安排</title>
+<title>成绩录入</title>
 <link rel="stylesheet" type="text/css" href="web.css" />
 <link rel="stylesheet" type="text/css" href="button.css" />
 <link rel="stylesheet" type="text/css" href="list.css" />
@@ -31,14 +31,14 @@
 <table style="margin-left:550px">
 <tr>
     <td>
-    <h2 style="font-size:32px;color:#c03f3f"> 项目安排</h2>
+    <h2 style="font-size:32px;color:#c03f3f"> 成绩录入</h2>
     </td>
   </tr>
 </table><br/>
 
 
 <div class="styled-select">
-<form action="sportitem2_Aadmin.jsp" method="get" style="margin-left:480px" > 
+<form action="input2_Aadmin.jsp" method="get" style="margin-left:480px" > 
 <select name="sportitem"> 
 <option value="1001">男子100米</option> 
 <option value="1002">男子200米</option> 

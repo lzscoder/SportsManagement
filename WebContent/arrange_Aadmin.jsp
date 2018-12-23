@@ -20,10 +20,10 @@ String itemname = request.getParameter("sportitem");
     <td><table border="0" cellspacing="0" cellpadding="0" class="nav">
   <tr>
     <td width="120" height="45" align="center" valign="middle"><a href="index_Aadmin.jsp">赛事概况</a></td>
-    <td width="120" height="45" align="center" valign="middle"><a href="">赛程安排</a></td>
-    <td width="120" height="45" align="center" valign="middle"><a href="">项目安排</a></td>
-    <td width="120" height="45" align="center" valign="middle"><a href="">成绩录入</a></td>
-    <td width="120" height="45" align="center" valign="middle"><a href="">成绩榜</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="arrange_Aadmin.jsp">赛程安排</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="sportitem_Aadmin.jsp">项目安排</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="input_Aadmin.jsp">成绩录入</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="score_Aadmin.jsp">成绩榜</a></td>
     <td width="120" height="45" align="center" valign="middle"><a href="login.jsp">退出系统</a></td>
   </tr>
     </table>

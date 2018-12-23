@@ -46,7 +46,7 @@
 <td align="center">比赛地点</td>
 <td align="center">报名</td>
 </tr>
-<%for(int i=0;i<3;i++){%>
+<%for(int i=0;i<1;i++){%>
 <tr>
 <td align="center"> </td>
 <td align="center"> </td>

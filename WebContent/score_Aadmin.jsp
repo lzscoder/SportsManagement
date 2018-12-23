@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@  page  import="com.sportproject.*" %>
+  <%@  page  import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>项目安排</title>
+<title>成绩榜</title>
 <link rel="stylesheet" type="text/css" href="web.css" />
 <link rel="stylesheet" type="text/css" href="button.css" />
 <link rel="stylesheet" type="text/css" href="list.css" />
 </head>
 <body>
-
 
 <h1>运动员管理系统</h1> <br/> <br/>
 <table width="1000" bgcolor="#FFFFFF"border="0" cellpadding="0" cellspacing="0">
@@ -28,17 +29,17 @@
 </td>
   </tr>
 </table><br>
+
 <table style="margin-left:550px">
 <tr>
     <td>
-    <h2 style="font-size:32px;color:#c03f3f"> 项目安排</h2>
+    <h2 > 项目成绩查询</h2>
     </td>
   </tr>
 </table><br/>
 
-
 <div class="styled-select">
-<form action="sportitem2_Aadmin.jsp" method="get" style="margin-left:480px" > 
+<form action="score2_Aadmin.jsp" method="get" style="margin-left:480px" > 
 <select name="sportitem"> 
 <option value="1001">男子100米</option> 
 <option value="1002">男子200米</option> 
@@ -75,18 +76,45 @@
 <option value="0134">女子七项全能</option> 
 </select> 
 
-<input type="submit" value="确认" class="button button-caution button-rounded button-small" >
+<input type="submit" value="查询" class="button button-caution button-rounded button-small" >
 
 </form> 
-</div><br/><br>
+</div>
 
- 
+
+
+<table style="margin-left:550px">
+<tr>
+    <td>
+    <h2 > 学院积分排名</h2>
+    </td>
+  </tr>
+</table><br/>
+<table border="2" width="1000" >
+<tr>
+<tr bgcolor="#b64747">
+<td align="center" width="600px">学院</td>
+<td align="center" width="200px">积分</td>
+<td align="center"width="200px">排名</td>
+</tr>
+<%for(int i=0;i<1;i++){%>
+<tr>
+<td align="center" width="600px">数学与信息学院 </td>
+<td align="center" width="200px">37 </td>
+<td align="center" width="200px">1</td>
+</tr>
+<%}%>
+
+</table><br/><br/>
+
+  
+  
+  
+  
 <table height="50" bgcolor="#804040" width="1000" style="color:#FFFFFF;">
   <tr>
     <td height="50" align="center" valign="middle" bgcolor="#804040" width="1000" style="color:#FFFFFF;">欢迎使用运动员管理系统</td>
   </tr>
 </table>
 </body>
-
-
 </html>
