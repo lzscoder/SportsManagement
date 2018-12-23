@@ -16,7 +16,7 @@ public class InputReasult {
 		ArrayList<ArrayList<String>> list= new ArrayList<ArrayList<String>>();
 		try {
 			Connection con = DBConnection.getConnection();
-			String sql = "select XueHao,XueYuan,XingMing from student_xuesheng,student_baoming where "
+			String sql = "select XueHao,XueYuan,XingMing from student_xuesheng,student_baoming where (student_xuesheng.XueHao=student_baoming.XueHao) and "
 					+ "((BaoMingXM1='"+XiangMuBH+"' and XiangMu1TG=1) or (BaoMingXM2='"+XiangMuBH+"' and XiangMu2TG=1))";
 			Statement statement=con.createStatement();
 			ResultSet rs=statement.executeQuery(sql);

@@ -16,7 +16,8 @@ public class RaceList {
 		try {
 			Connection con = DBConnection.getConnection();
 			String sql = "select YunDongYBH,XueHao,XingMing,NianJi,ZhuanYe,BanJi from student_xuesheng , sutdent_yundongy,student_baoming"
-					+ " where  XueHao like '" + XueYuanBH + "%' and ((BaoMingXM1='"+XiangMuBH+"' and XiangMu1TG=1) or (BaoMingXM2='"+XiangMuBH+"' and XiangMu2TG=1));";
+					+ " where  (student_xuesheng.XueHao=student_yundongy.XuaHao) and (student_yundongy.XuaHao=student_baoming.XueHao) and"
+					+ " XueHao like '" + XueYuanBH + "%' and ((BaoMingXM1='"+XiangMuBH+"' and XiangMu1TG=1) or (BaoMingXM2='"+XiangMuBH+"' and XiangMu2TG=1));";
 			Statement statement=con.createStatement();
 			ResultSet rs=statement.executeQuery(sql);
 			while(rs.next()) {
