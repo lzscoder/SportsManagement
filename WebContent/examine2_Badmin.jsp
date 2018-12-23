@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@  page  import="com.sportproject.*" %>
+  <%@  page  import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,48 +11,23 @@
 <link rel="stylesheet" type="text/css" href="button.css" />
 </head>
 <body>
-<%!
-      public class Item{
-	      public String stuid;
-	      public String stumajor;
-	      public String stugrade;
-	      public String stuclass;
-	      public String stuname;
 
-
-	      public Item(String stuid,String stumajor,String stugrade,String stuclass,String stuname) {
-	    	  this.stuid=stuid;
-	    	  this.stumajor=stumajor;
-	    	  this.stugrade=stugrade;
-	    	  this.stuclass=stuclass;
-	    	  this.stuname=stuname;
-	    	}
-	     
-          }
-         int i=0;
-         private Item[] item=new Item[]{
-        		 new Item("105032016001","计算机科学与技术","大二","计算机本科2班","小明"),
-        		 new Item("105032016002","计算机科学与技术","大二","计算机本科2班","小李"),
-        		 new Item("105032016003","计算机科学与技术","大二","计算机本科2班","小华"),
-
-
-         };
-%>
 <%
 
+String UserName = (String) session.getAttribute("USERNAME");
+String spitem = request.getParameter("sportitem");
+ArrayList<ArrayList<String>> list = ChooseInCollege.getlist(spitem, UserName);
  %>
 <h1>运动员管理系统</h1> <br/> <br/>
 <table width="1000" bgcolor="#FFFFFF"border="0" cellpadding="0" cellspacing="0">
   <tr bgcolor="#804040">
     <td><table border="0" cellspacing="0" cellpadding="0" class="nav">
   <tr>
-    <td width="110" height="45" align="center" valign="middle"><a href="index_Badmin.jsp">赛事概况</a></td>
-    <td width="110" height="45" align="center" valign="middle"><a href="examine_Badmin.jsp">资格审核</a></td>
-    <td width="110" height="45" align="center" valign="middle"><a href="">正赛名单</a></td>
-    <td width="110" height="45" align="center" valign="middle"><a href="">运动员信息</a></td>
-    <td width="110" height="45" align="center" valign="middle"><a href="">赛程查看</a></td>
-    <td width="110" height="45" align="center" valign="middle"><a href="">成绩榜</a></td>
-    <td width="110" height="45" align="center" valign="middle"><a href="login.jsp">退出系统</a></td>
+    <td width="150" height="45" align="center" valign="middle"><a href="index_Badmin.jsp">赛事概况</a></td>
+    <td width="150" height="45" align="center" valign="middle"><a href="examine_Badmin.jsp">资格审核</a></td>
+    <td width="150" height="45" align="center" valign="middle"><a href="sportlist_Badmin.jsp">正赛名单</a></td>
+    <td width="150" height="45" align="center" valign="middle"><a href="score_Badmin.jsp">成绩榜</a></td>
+    <td width="150" height="45" align="center" valign="middle"><a href="login.jsp">退出系统</a></td>
   </tr>
     </table>
 </td>
@@ -73,13 +50,13 @@
 <td align="center">姓名</td>
 <td align="center">录用</td>
 </tr>
-<%for(int i=0;i<3;i++){%>
+<%for(int i=0;i<list.size();i++){%>
 <tr>
-<td align="center"> <%=item[i].stuid%></td>
-<td align="center"> <%=item[i].stumajor%></td>
-<td align="center"> <%=item[i].stugrade%></td>
-<td align="center"> <%=item[i].stuclass%></td>
-<td align="center"> <%=item[i].stuname%></td>
+<td align="center"> <%=list.get(i).get(0)%></td>
+<td align="center"> </td>
+<td align="center"> <%=list.get(i).get(2)%></td>
+<td align="center"> <%=list.get(i).get(3)%></td>
+<td align="center"> <%=list.get(i).get(1)%></td>
 
 <td align="center"><input type="submit" value="录用" onclick="add(this)" /></td>
 </tr>
@@ -100,6 +77,7 @@
     </td>
   </tr>
 </table><br/>
+<form>
         <table border="2"width="1000"  >
             <thead>
                 <tr bgcolor="#b64747">
@@ -122,7 +100,15 @@
                 
             </tfoot>
             
-        </table><br/>
+        </table> <br/>
+        </form>
+       <form action="examine_Badmin.jsp">
+            <table width="1000">
+              <tr>
+                <td  align="right" ><input type="submit" value="返回" class="button button-caution button-rounded button-small" ></td>
+             </tr>
+       </table><br/><br/>
+      </form> 
  
     </body>
     <script type="text/javascript">

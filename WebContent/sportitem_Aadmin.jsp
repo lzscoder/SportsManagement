@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>资格审核</title>
+<title>项目安排</title>
 <link rel="stylesheet" type="text/css" href="web.css" />
 <link rel="stylesheet" type="text/css" href="button.css" />
 <link rel="stylesheet" type="text/css" href="list.css" />
@@ -17,11 +17,12 @@
   <tr bgcolor="#804040">
     <td><table border="0" cellspacing="0" cellpadding="0" class="nav">
   <tr>
-    <td width="150" height="45" align="center" valign="middle"><a href="index_Badmin.jsp">赛事概况</a></td>
-    <td width="150" height="45" align="center" valign="middle"><a href="examine_Badmin.jsp">资格审核</a></td>
-    <td width="150" height="45" align="center" valign="middle"><a href="sportlist_Badmin.jsp">正赛名单</a></td>
-    <td width="150" height="45" align="center" valign="middle"><a href="score_Badmin.jsp">成绩榜</a></td>
-    <td width="150" height="45" align="center" valign="middle"><a href="login.jsp">退出系统</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="index_Aadmin.jsp">赛事概况</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="">赛程安排</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="">项目安排</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="">成绩录入</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="">成绩榜</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="login.jsp">退出系统</a></td>
   </tr>
     </table>
 </td>
@@ -30,14 +31,14 @@
 <table style="margin-left:550px">
 <tr>
     <td>
-    <h2 style="font-size:32px;color:#c03f3f"> 资格审核</h2>
+    <h2 style="font-size:32px;color:#c03f3f"> 项目安排</h2>
     </td>
   </tr>
 </table><br/>
 
 
 <div class="styled-select">
-<form action="examine2_Badmin.jsp" method="get" style="margin-left:480px" > 
+<form action="sportitem2_Aadmin.jsp" method="get" style="margin-left:480px" > 
 <select name="sportitem"> 
 <option value="1001">男子100米</option> 
 <option value="1002">男子200米</option> 
@@ -74,7 +75,7 @@
 <option value="0134">女子七项全能</option> 
 </select> 
 
-<input type="submit" value="查询" class="button button-caution button-rounded button-small" >
+<input type="submit" value="确认" class="button button-caution button-rounded button-small" >
 
 </form> 
 </div><br/><br>

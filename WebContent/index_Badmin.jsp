@@ -15,13 +15,11 @@
   <tr bgcolor="#804040">
     <td><table border="0" cellspacing="0" cellpadding="0" class="nav">
   <tr>
-    <td width="110" height="45" align="center" valign="middle"><a href="index_Badmin.jsp">赛事概况</a></td>
-    <td width="110" height="45" align="center" valign="middle"><a href="examine_Badmin.jsp">资格审核</a></td>
-    <td width="110" height="45" align="center" valign="middle"><a href="">正赛名单</a></td>
-    <td width="110" height="45" align="center" valign="middle"><a href="">运动员信息</a></td>
-    <td width="110" height="45" align="center" valign="middle"><a href="">赛程查看</a></td>
-    <td width="110" height="45" align="center" valign="middle"><a href="">成绩榜</a></td>
-    <td width="110" height="45" align="center" valign="middle"><a href="login.jsp">退出系统</a></td>
+    <td width="150" height="45" align="center" valign="middle"><a href="index_Badmin.jsp">赛事概况</a></td>
+    <td width="150" height="45" align="center" valign="middle"><a href="examine_Badmin.jsp">资格审核</a></td>
+    <td width="150" height="45" align="center" valign="middle"><a href="">正赛名单</a></td>
+    <td width="150" height="45" align="center" valign="middle"><a href="">成绩榜</a></td>
+    <td width="150" height="45" align="center" valign="middle"><a href="login.jsp">退出系统</a></td>
   </tr>
 </table>
 </td>

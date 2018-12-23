@@ -1,0 +1,11 @@
+.styled-select select {
+   background: transparent;
+   width: 268px;
+   padding: 5px;
+   font-size: 16px;
+   border: 1px solid #800000;
+   height: 34px;
+   color:#b64747;
+   -webkit-appearance: none; 
+}
+

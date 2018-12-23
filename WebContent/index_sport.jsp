@@ -16,9 +16,9 @@
     <td><table border="0" cellspacing="0" cellpadding="0" class="nav">
   <tr>
     <td width="150" height="45" align="center" valign="middle"><a href="index_sport.jsp">赛事概况</a></td>
-    <td width="150" height="45" align="center" valign="middle"><a href="signup_sport.jsp">赛事报名</a></td>
-    <td width="150" height="45" align="center" valign="middle"><a href="">个人比赛详情</a></td>
-    <td width="150" height="45" align="center" valign="middle"><a href="">成绩查询</a></td>
+    <td width="150" height="45" align="center" valign="middle"><a href="baoming_sport.jsp">赛事报名</a></td>
+    <td width="150" height="45" align="center" valign="middle"><a href="information_sport.jsp">个人比赛详情</a></td>
+    <td width="150" height="45" align="center" valign="middle"><a href="score_sport.jsp">成绩查询</a></td>
     <td width="150" height="45" align="center" valign="middle"><a href="login.jsp">退出系统</a></td>
   </tr>
 </table>

@@ -94,7 +94,7 @@
 
  
 
-       <a class="btn btn-sm btn-white btn-block" style="text-align: right;" th:href="@{register}" href="register.jsp"><h6>还没有账号？点击此处注册</h6></a>
+       
  </form> 
 
 
