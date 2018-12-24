@@ -19,16 +19,12 @@ public class CreateBH {
 		}catch(ClassNotFoundException e){
 		    	e.printStackTrace();
 		}
-		//�������ݿ�
-//		String  url="jdbc:mysql://localhost:3306/sportsmanagement?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
-//		String  un="root";
-//		String  pw="123456";
+		//生成运动员编号，学院号+排序号
 		ArrayList<ArrayList<String>> list2 = new ArrayList<ArrayList<String>>();
 		try {
-			//ѭ�������ݲ��뵽���ݿ���
 			Connection con=DBConnection.getConnection();
 			Statement statement=con.createStatement();
-			String selectXueHao = "select XueHao from student_baoming;";
+			String selectXueHao = "select XueHao from student_baoming where (XiangMu1TG = 1 or XiangMu2TG = 1);";
 			ResultSet reasultSearch=statement.executeQuery(selectXueHao);
 			Integer i = 1;
 			while(reasultSearch.next())
@@ -42,6 +38,8 @@ public class CreateBH {
 					num = "00"+num;
 				else if(num.length()==3)
 					num = "0"+num;
+				
+				num = Xuehao.substring(0,3);
 				String insertRow = "insert into student_yundongy values(\""+num+"\",\""+Xuehao+"\");";
 				i++;
 				statement1.executeUpdate(insertRow);

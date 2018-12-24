@@ -1,5 +1,8 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.sportproject.*" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,15 +49,21 @@
 <td align="center">比赛地点</td>
 <td align="center">报名</td>
 </tr>
-<%for(int i=0;i<1;i++){%>
+<%
+String mUserName = (String)session.getAttribute("USERNAME");
+
+//System.out.println(mUserName);
+ArrayList<ArrayList<String>> list2 = Project.pullProject(mUserName);
+//ArrayList<ArrayList<String>> list2 = Project.pullProject(mUserName);
+for(int i=0;i<list2.size();i++){%>
 <tr>
-<td align="center"> </td>
-<td align="center"> </td>
-<td align="center"> </td>
-<td align="center"> </td>
-<td align="center"> </td>
-<td align="center"> </td>
-<td align="center"> </td>
+<td align="center"><%=list2.get(i).get(0) %></td>
+<td align="center"> <%=list2.get(i).get(1) %></td>
+<td align="center"> <%=list2.get(i).get(2) %></td>
+<td align="center"> <%=list2.get(i).get(3) %></td>
+<td align="center"> <%=list2.get(i).get(4) %></td>
+<td align="center"> <%=list2.get(i).get(5) %></td>
+<td align="center"> <%=list2.get(i).get(6) %></td>
 <td align="center"><input type="submit" value="报名" onclick="add(this)" /></td>
 </tr>
 <%}%>
@@ -133,6 +142,7 @@
         var m = price * amount;
         tds[3].innerHTML = m;
         total();
+
     }
 
         function del(i){
