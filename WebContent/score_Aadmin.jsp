@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
  <%@  page  import="com.sportproject.*" %>
   <%@  page  import="java.util.ArrayList" %>
+<%@ page import="com.selectScores.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,11 +98,16 @@
 <td align="center" width="200px">积分</td>
 <td align="center"width="200px">排名</td>
 </tr>
-<%for(int i=0;i<1;i++){%>
+<%
+
+
+ArrayList<ArrayList<String>> list2 = SelectScores.GetOrderOfJiFen();
+
+for(int i=0;i<list2.size();i++){%>
 <tr>
-<td align="center" width="600px">数学与信息学院 </td>
-<td align="center" width="200px">37 </td>
-<td align="center" width="200px">1</td>
+<td align="center" width="600px"><%=list2.get(i).get(0)%></td>
+<td align="center" width="200px"><%=list2.get(i).get(1)%></td>
+<td align="center" width="200px"><%=list2.get(i).get(2)%></td>
 </tr>
 <%}%>
 
