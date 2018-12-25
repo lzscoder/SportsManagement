@@ -39,7 +39,7 @@ ArrayList<ArrayList<String>> list1 = InputReasult.gelistXY();
     </td>
   </tr>
 </table><br/>
-<form>
+<form action="" method="post">
 <table border="2" width="1000" >
 <tr>
 <tr bgcolor="#b64747">
@@ -54,9 +54,9 @@ ArrayList<ArrayList<String>> list1 = InputReasult.gelistXY();
 <tr>
 <td align="center"><input name="<%=list.get(i).get(0) %>_id" value=<%=list.get(i).get(0) %> type="hidden"><%=list.get(i).get(0) %> </td>
 <td align="center"><%=list.get(i).get(2) %> </td>
-<td align="center"> <input  type="text" name="<%=list.get(i).get(0) %>_score" style="BACKGROUND-COLOR:#f9c69b;"></td>
-<td align="center"> <input  type="text" name="<%=list.get(i).get(0) %>_paiming" style="BACKGROUND-COLOR:#f9c69b;"></td>
-<td align="center"> <input  type="text" name="<%=list.get(i).get(0) %>_jifen" style="BACKGROUND-COLOR:#f9c69b;"></td>
+<td align="center"> <input  type="text" name="<%=list.get(i).get(0) %>_score"  style="BACKGROUND-COLOR:#f9c69b;"></td>
+<td align="center"> <input  type="text" name="<%=list.get(i).get(0) %>_paiming"  style="BACKGROUND-COLOR:#f9c69b;"></td>
+<td align="center"> <input  type="text" name="<%=list.get(i).get(0) %>_jifen"   style="BACKGROUND-COLOR:#f9c69b;"></td>
 </tr>
 <%}}
 else {
@@ -64,9 +64,9 @@ else {
 <tr>
 <td align="center"><input name="<%=list1.get(i).get(0)%>_id"  value=<%=list1.get(i).get(0) %> type="hidden"><%=list1.get(i).get(0) %> </td>
 <td align="center"><%=list1.get(i).get(1) %> </td>
-<td align="center"> <input  type="text" name="<%=list1.get(i).get(0) %>_score" style="BACKGROUND-COLOR:#f9c69b;"></td>
-<td align="center"> <input  type="text" name="<%=list1.get(i).get(0) %>_paiming" style="BACKGROUND-COLOR:#f9c69b;"></td>
-<td align="center"> <input  type="text" name="<%=list1.get(i).get(0) %>_jifen" style="BACKGROUND-COLOR:#f9c69b;"></td>
+<td align="center"> <input  type="text" name="<%=list1.get(i).get(0) %>_score"  style="BACKGROUND-COLOR:#f9c69b;"></td>
+<td align="center"> <input  type="text" name="<%=list1.get(i).get(0) %>_paiming"   style="BACKGROUND-COLOR:#f9c69b;"></td>
+<td align="center"> <input  type="text" name="<%=list1.get(i).get(0) %>_jifen"   style="BACKGROUND-COLOR:#f9c69b;"></td>
 </tr>
 <%	}
 } %>
@@ -79,6 +79,39 @@ else {
 </tr>
 </table>
  </form>
+ <%
+ if(list.size()>0) {
+	 for(int i=0;i<list.size();i++) {
+		 String YunDongYBH = list.get(i).get(0);
+		 String s = list.get(i).get(0);
+		 String score = request.getParameter(s+"_score");
+		 String paiming = request.getParameter(s+"_paiming");
+		 String jifen = request.getParameter(s+"_jifen");
+		 if(jifen!=null&&paiming!=null){
+		 	int j = Integer.parseInt(jifen);
+		 	int p = Integer.parseInt(paiming);
+		 	InputReasult.inputGeRen(YunDongYBH, itemID, score, j, p);
+		 }
+		 //out.print(YunDongYBH);out.print(itemID);out.print(score);out.print(jifen);out.print(paiming);
+	 }
+ }else {
+	for(int i=0;i<list1.size();i++) {
+		 String XueYuanBH = list1.get(i).get(0);
+		 String s = list1.get(i).get(0);
+		 String score = request.getParameter(s+"_score");
+		 String paiming = request.getParameter(s+"_paiming");
+		 String jifen = request.getParameter(s+"_jifen");
+		 if(jifen!=null&&paiming!=null){
+			 	int j = Integer.parseInt(jifen);
+			 	int p = Integer.parseInt(paiming);
+			 	InputReasult.inputTuanTi(XueYuanBH, itemID, score, j, p);
+		}
+		// out.print(XueYuanBH);out.print(itemID);out.print(score);out.print(jifen);out.print(paiming);
+	}
+
+ }
+ %>
+ 
 <table height="50" bgcolor="#804040" width="1000" style="color:#FFFFFF;">
   <tr>
     <td height="50" align="center" valign="middle" bgcolor="#804040" width="1000" style="color:#FFFFFF;">欢迎使用运动员管理系统</td>

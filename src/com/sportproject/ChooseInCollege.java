@@ -31,9 +31,29 @@ public class ChooseInCollege {
 	}
 	
 	
-	public static void chooseSport(String XiangMuBH,String XueHao,String choosedXueS) {
-		String sql1 = "update xuesheng_baoming set XiangMu1TG=? where XueHao=? and BaoMingXM1=?";
-		String sql2 = "update xuesheng_baoming set XiangMu2TG=? where XueHao=? and BaoMingXM2=?";
+	public static void chooseSport(String XiangMuBH,String XueHao) {
+		String sql1 = "update student_baoming set XiangMu1TG=? where XueHao=? and BaoMingXM1=?";
+		String sql2 = "update student_baoming set XiangMu2TG=? where XueHao=? and BaoMingXM2=?";
+		try {
+			Connection con = DBConnection.getConnection();
+			PreparedStatement ptmt = (PreparedStatement) con.prepareStatement(sql1);
+			ptmt.setString(1, "1");
+			ptmt.setString(2, XueHao);
+			ptmt.setString(3, XiangMuBH);
+			ptmt.execute();
+			ptmt = (PreparedStatement) con.prepareStatement(sql2);
+			ptmt.setString(1, "1");
+			ptmt.setString(2, XueHao);
+			ptmt.setString(3, XiangMuBH);
+			ptmt.execute();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void deletechoosed (String XiangMuBH,String choosedXueS) {
+		String sql1 = "update student_baoming set XiangMu1TG=? where XueHao=? and BaoMingXM1=?";
+		String sql2 = "update student_baoming set XiangMu2TG=? where XueHao=? and BaoMingXM2=?";
 		try {
 			Connection con = DBConnection.getConnection();
 			PreparedStatement ptmt1 = (PreparedStatement) con.prepareStatement(sql1);
@@ -46,17 +66,6 @@ public class ChooseInCollege {
 			ptmt1.setString(2, choosedXueS);
 			ptmt1.setString(3, XiangMuBH);
 			ptmt1.execute();
-			
-			PreparedStatement ptmt = (PreparedStatement) con.prepareStatement(sql1);
-			ptmt.setString(1, "1");
-			ptmt.setString(2, XueHao);
-			ptmt.setString(3, XiangMuBH);
-			ptmt.execute();
-			ptmt = (PreparedStatement) con.prepareStatement(sql2);
-			ptmt.setString(1, "1");
-			ptmt.setString(2, XueHao);
-			ptmt.setString(3, XiangMuBH);
-			ptmt.execute();
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}

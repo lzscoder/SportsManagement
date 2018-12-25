@@ -16,9 +16,12 @@ public class InputReasult {
 		ArrayList<ArrayList<String>> list= new ArrayList<ArrayList<String>>();
 		try {
 			Connection con = DBConnection.getConnection();
-			String sql = "select YunDongYBH,XueYuanMC,XingMing from student_xuesheng,student_baoming,student_yundongy,college_xueyuan where (student_baoming.XueHao=student_yundongy.XueHao) and "
+//			String sql = "select student_yundongy.YunDongYBH,XueYuanMC,XingMing,ChengJi,PaiMing,JiFen from student_xuesheng,student_baoming,student_yundongy,college_xueyuan,score_geren where (student_baoming.XueHao=student_yundongy.XueHao) and "
+//					+ "(student_xuesheng.XueHao=student_baoming.XueHao) and (student_yundongy.YunDongYBH=score_geren.YunDongYBH) and "
+//					+ "((BaoMingXM1='"+XiangMuBH+"' and XiangMu1TG=1) or (BaoMingXM2='"+XiangMuBH+"' and XiangMu2TG=1)) and XueYuan=XueYuanBH order by student_yundongy.YunDongYBH";
+			String sql = "select student_yundongy.YunDongYBH,XueYuanMC,XingMing from student_xuesheng,student_baoming,student_yundongy,college_xueyuan where (student_baoming.XueHao=student_yundongy.XueHao) and "
 					+ "(student_xuesheng.XueHao=student_baoming.XueHao) and "
-					+ "((BaoMingXM1='"+XiangMuBH+"' and XiangMu1TG=1) or (BaoMingXM2='"+XiangMuBH+"' and XiangMu2TG=1)) and XueYuan=XueYuanBH order by YunDongYBH";
+					+ "((BaoMingXM1='"+XiangMuBH+"' and XiangMu1TG=1) or (BaoMingXM2='"+XiangMuBH+"' and XiangMu2TG=1)) and XueYuan=XueYuanBH order by student_yundongy.YunDongYBH";
 			Statement statement=con.createStatement();
 			ResultSet rs=statement.executeQuery(sql);
 			while(rs.next()) {
@@ -26,6 +29,9 @@ public class InputReasult {
 				l.add(rs.getString("YunDongYBH"));
 				l.add(rs.getString("XueYuanMC"));
 				l.add(rs.getString("XingMing"));
+//				l.add(rs.getString("ChengJi"));
+//				l.add(rs.getString("PaiMing"));
+//				l.add(rs.getString("JiFen"));
 				list.add(l);
 			}
 		}catch(SQLException e) {
@@ -39,13 +45,14 @@ public class InputReasult {
 		ArrayList<ArrayList<String>> list= new ArrayList<ArrayList<String>>();
 		try {
 			Connection con = DBConnection.getConnection();
-			String sql = "select XueYuanBH,XueYuanMC from college_xueyuan order by XueYuanBH";
+			String sql = "select XueYuanBH,XueYuanMC from college_xueyuan  order by XueYuanBH";
 			Statement statement=con.createStatement();
 			ResultSet rs=statement.executeQuery(sql);
 			while(rs.next()) {
 				ArrayList<String> l = new ArrayList<String>();
 				l.add(rs.getString("XueYuanBH"));
 				l.add(rs.getString("XueYuanMC"));
+			
 				list.add(l);
 			}
 		}catch(SQLException e) {

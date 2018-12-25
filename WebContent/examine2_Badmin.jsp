@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@  page  import="com.sportproject.*" %>
+ <%@  page  import="com.sportproject.*" %><%@  page  import="com.college.*" %>
   <%@  page  import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
@@ -17,6 +17,9 @@
 String UserName = (String) session.getAttribute("USERNAME");
 String spitem = request.getParameter("sportitem");
 ArrayList<ArrayList<String>> list = ChooseInCollege.getlist(spitem, UserName);
+ArrayList<ArrayList<String>> choosed = ChoosedStudent.getlist(UserName, spitem);
+String tijiao=null;
+String flag = " ";
  %>
 <h1>运动员管理系统</h1> <br/> <br/>
 <table width="1000" bgcolor="#FFFFFF"border="0" cellpadding="0" cellspacing="0">
@@ -66,7 +69,30 @@ ArrayList<ArrayList<String>> list = ChooseInCollege.getlist(spitem, UserName);
 
 </table><br/><br/>
 </form>
-  
+<%
+tijiao = request.getParameter("tijiao");
+if(tijiao!=null) {
+	ChooseInCollege.chooseSport(spitem, tijiao);
+	tijiao=null;
+	flag="<script>alert('选择成功')</script>";
+}
+
+
+%>
+<%=flag %>
+<%flag=" "; %>
+<hr>已选
+<%
+if(choosed.size()>0) {
+	for(int i=0;i<choosed.size();i++){
+		out.print(choosed.get(i).get(0));
+		out.print(choosed.get(i).get(1));
+		out.print(choosed.get(i).get(2));
+		out.print(choosed.get(i).get(3));
+		out.print(choosed.get(i).get(4));
+	}
+}
+%>
 <table height="50" bgcolor="#804040" width="1000" style="color:#FFFFFF;">
   <tr>
     <td height="50" align="center" valign="middle" bgcolor="#804040" width="1000" style="color:#FFFFFF;">欢迎使用运动员管理系统</td>
