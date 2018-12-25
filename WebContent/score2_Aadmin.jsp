@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
  <%@  page  import="com.sportproject.*" %>
   <%@  page  import="java.util.ArrayList" %>
+<%@ page import="com.selectScores.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,7 @@
 <body>
 <%
 String itemname = request.getParameter("sportitem");
+ArrayList<ArrayList<String>> list2 = SelectScores.ScoreOfItem(itemname);
 %>
 <h1>运动员管理系统</h1> <br/> <br/>
 <table width="1000" bgcolor="#FFFFFF"border="0" cellpadding="0" cellspacing="0">
@@ -21,7 +23,7 @@ String itemname = request.getParameter("sportitem");
     <td><table border="0" cellspacing="0" cellpadding="0" class="nav">
   <tr>
     <td width="120" height="45" align="center" valign="middle"><a href="index_Aadmin.jsp">赛事概况</a></td>
-    <td width="120" height="45" align="center" valign="middle"><a href="arrange_Aadmin.jsp">赛程安排</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="arrange_Aadmin.jsp">查看赛程</a></td>
     <td width="120" height="45" align="center" valign="middle"><a href="sportitem_Aadmin.jsp">项目安排</a></td>
     <td width="120" height="45" align="center" valign="middle"><a href="input_Aadmin.jsp">成绩录入</a></td>
     <td width="120" height="45" align="center" valign="middle"><a href="score_Aadmin.jsp">成绩榜</a></td>
@@ -50,14 +52,14 @@ String itemname = request.getParameter("sportitem");
 <td align="center" width="50px">名次</td>
 <td align="center"width="50px">积分</td>
 </tr>
-<%for(int i=0;i<1;i++){%>
+<%for(int i=0;i<list2.size();i++){%>
 <tr>
-<td align="center" width="400px">数学与信息学院</td>
-<td align="center" width="200px">114514</td>
-<td align="center" width="200px">小明</td>
-<td align="center" width="100px">10.1</td>
-<td align="center" width="50px">1</td>
-<td align="center"width="50px">9</td>
+<td align="center" width="400px"><%=list2.get(i).get(0) %></td>
+<td align="center" width="200px"><%=list2.get(i).get(1) %></td>
+<td align="center" width="200px"><%=list2.get(i).get(2) %></td>
+<td align="center" width="100px"><%=list2.get(i).get(3) %></td>
+<td align="center" width="50px"><%=list2.get(i).get(4) %></td>
+<td align="center"width="50px"><%=list2.get(i).get(5) %></td>
 </tr>
 <%}%>
 
