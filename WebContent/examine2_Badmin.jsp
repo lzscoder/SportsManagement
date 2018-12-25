@@ -23,11 +23,12 @@ ArrayList<ArrayList<String>> list = ChooseInCollege.getlist(spitem, UserName);
   <tr bgcolor="#804040">
     <td><table border="0" cellspacing="0" cellpadding="0" class="nav">
   <tr>
-    <td width="150" height="45" align="center" valign="middle"><a href="index_Badmin.jsp">赛事概况</a></td>
-    <td width="150" height="45" align="center" valign="middle"><a href="examine_Badmin.jsp">资格审核</a></td>
-    <td width="150" height="45" align="center" valign="middle"><a href="sportlist_Badmin.jsp">正赛名单</a></td>
-    <td width="150" height="45" align="center" valign="middle"><a href="score_Badmin.jsp">成绩榜</a></td>
-    <td width="150" height="45" align="center" valign="middle"><a href="login.jsp">退出系统</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="index_Badmin.jsp">赛事概况</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="arrange_Badmin.jsp">查看赛程</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="examine_Badmin.jsp">资格审核</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="sportlist_Badmin.jsp">正赛名单</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="score_Badmin.jsp">成绩榜</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="login.jsp">退出系统</a></td>
   </tr>
     </table>
 </td>
@@ -40,6 +41,7 @@ ArrayList<ArrayList<String>> list = ChooseInCollege.getlist(spitem, UserName);
     </td>
   </tr>
 </table><br/>
+<form action="" method="post">
 <table border="2" width="1000" >
 <tr>
 <tr bgcolor="#b64747">
@@ -52,26 +54,24 @@ ArrayList<ArrayList<String>> list = ChooseInCollege.getlist(spitem, UserName);
 </tr>
 <%for(int i=0;i<list.size();i++){%>
 <tr>
-<td align="center"> <%=list.get(i).get(0)%></td>
+
+<td align="center"><%=list.get(i).get(0)%></td>
 <td align="center"> </td>
 <td align="center"> <%=list.get(i).get(2)%></td>
 <td align="center"> <%=list.get(i).get(3)%></td>
 <td align="center"> <%=list.get(i).get(1)%></td>
-
-<td align="center"><input type="submit" value="录用" onclick="add(this)" /></td>
+<td align="center"><button type="submit" name="tijiao" value=<%=list.get(i).get(0)%>>提交</button></td>
 </tr>
 <%}%>
 
 </table><br/><br/>
-
-  
-  
-  
+</form>
   
 <table height="50" bgcolor="#804040" width="1000" style="color:#FFFFFF;">
   <tr>
     <td height="50" align="center" valign="middle" bgcolor="#804040" width="1000" style="color:#FFFFFF;">欢迎使用运动员管理系统</td>
   </tr>
 </table>
+
 </body>
 </html>

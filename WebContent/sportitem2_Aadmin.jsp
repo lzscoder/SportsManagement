@@ -18,7 +18,7 @@
     <td><table border="0" cellspacing="0" cellpadding="0" class="nav">
   <tr>
     <td width="120" height="45" align="center" valign="middle"><a href="index_Aadmin.jsp">赛事概况</a></td>
-    <td width="120" height="45" align="center" valign="middle"><a href="arrange_Aadmin.jsp">赛程安排</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="arrange_Aadmin.jsp">查看赛程</a></td>
     <td width="120" height="45" align="center" valign="middle"><a href="sportitem_Aadmin.jsp">项目安排</a></td>
     <td width="120" height="45" align="center" valign="middle"><a href="input_Aadmin.jsp">成绩录入</a></td>
     <td width="120" height="45" align="center" valign="middle"><a href="score_Aadmin.jsp">成绩榜</a></td>
@@ -54,55 +54,16 @@
 <td align="center" width="200px"></td>
 <td align="center" width="50px"></td>
 <td align="center" width="100px"></td>
-<td align="center" width="50px">
-<select name="group"style="width: 50px;color:#b64747;border: 1px solid #800000;"> 
-<option value=""></option> 
-<option value="01">1</option> 
-<option value="02">2</option> 
-<option value="03">3</option> 
-<option value="04">4</option> 
-<option value="05">5</option> 
-<option value="06">6</option> 
-<option value="07">7</option> 
-<option value="08">8</option> 
-<option value="09">9</option> 
-<option value="10">10</option> 
-<option value="11">11</option> 
-<option value="12">12</option> 
-</select> 
-</td>
-<td align="center" width="50px">
-<select name="seat"style="width: 50px;color:#b64747;border: 1px solid #800000;"> 
-<option value=""></option> 
-<option value="01">1</option> 
-<option value="02">2</option> 
-<option value="03">3</option> 
-<option value="04">4</option> 
-<option value="05">5</option> 
-<option value="06">6</option> 
-<option value="07">7</option> 
-<option value="08">8</option> 
-<option value="09">9</option> 
-<option value="10">10</option> 
-<option value="11">11</option> 
-<option value="12">12</option> 
-<option value="13">13</option> 
-<option value="14">14</option> 
-<option value="15">15</option> 
-<option value="16">16</option> 
-<option value="17">17</option> 
-<option value="18">18</option> 
-<option value="19">19</option> 
-<option value="20">20</option> 
-</select> 
-</td>
+<td align="center" width="50px"></td>
+<td align="center" width="50px"></td>
 </tr>
 <%}%>
 </table><br/>
   <table width="1000">
               <tr>
                 <td  align="center" >
-                <input type="submit" value="提交" class="button button-caution button-rounded button-small" >
+                <button type="submit" name="sub"  class="button button-caution button-rounded button-small" >自动提交</button>
+                <input type="button" name="back"  value="返回" class="button button-caution button-rounded button-small" onclick="location='http://localhost:8080/SportsManagement/sportitem_Aadmin.jsp'"></input>
                 </td>
                 
              </tr>
