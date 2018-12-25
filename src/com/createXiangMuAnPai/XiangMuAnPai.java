@@ -11,6 +11,7 @@ import java.util.Comparator;
 
 import com.geotest.DBConnection;
 
+
 public class XiangMuAnPai {
 	
 	
@@ -310,13 +311,65 @@ public class XiangMuAnPai {
 			e.printStackTrace();
 		}
 		
-
+		
+		
+		
+		
+		
 		
 		
 		
 	}
-	public static void main(String[] args) {
-		saiChengAnPai();
+	
+	
+	//将项目安排按照时间分组输出  7*5使用一个静态数组
+	public static ArrayList<ArrayList<String>> selectSaiChengAnPai()
+	{
+		
+		Connection con;
+		con = DBConnection.getConnection();
+		Statement statement;
+		ArrayList<ArrayList<String>> list2 = new ArrayList<ArrayList<String>>();
+		
+		try {
+			statement = con.createStatement();
+			String selectSaiChengAnPai = "select XiangMuMC,BiSaiSJ,BiSaiDD from item_xiangmu;";
+			ResultSet reasultSearch=statement.executeQuery(selectSaiChengAnPai);
+			
+			while(reasultSearch.next())
+			{
+				ArrayList<String> list =  new ArrayList<String>();
+				if(reasultSearch.getDate("BiSaiSJ")!=null)
+				{
+					list.add(reasultSearch.getString("XiangMuMC")); 
+					list.add(reasultSearch.getString("BiSaiDD")); 
+					String date = reasultSearch.getTimestamp("BiSaiSJ").toString();
+					list.add(date);
+					list2.add(list);
+				}
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+//		System.out.println("12345");
+//		System.out.println(list2.toString());
+		Collections.sort(list2, new SortByAge());
+		
+		return list2;
+		
 	}
 
+}
+class SortByAge implements Comparator 
+{
+	public int compare(Object o1, Object o2) 
+	{
+		ArrayList<String> s1 = (ArrayList<String>) o1;
+		ArrayList<String> s2 = (ArrayList<String>) o2;
+		return 0-s2.get(2).compareTo(s1.get(2));
+	}
 }

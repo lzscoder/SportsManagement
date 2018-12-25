@@ -19,13 +19,8 @@ public class CreateBH {
 		}catch(ClassNotFoundException e){
 		    	e.printStackTrace();
 		}
-		//�������ݿ�
-//		String  url="jdbc:mysql://localhost:3306/sportsmanagement?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
-//		String  un="root";
-//		String  pw="123456";
 		ArrayList<ArrayList<String>> list2 = new ArrayList<ArrayList<String>>();
 		try {
-			//ѭ�������ݲ��뵽���ݿ���
 			Connection con=DBConnection.getConnection();
 			Statement statement=con.createStatement();
 			String selectXueHao = "select XueHao from student_baoming;";

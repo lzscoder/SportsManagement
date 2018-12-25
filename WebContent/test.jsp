@@ -1,7 +1,9 @@
+<%@page import="com.createXiangMuAnPai.XiangMuAnPai"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <%@  page  import="com.sportproject.*" %>
   <%@  page  import="java.util.ArrayList" %>
+<%@ page import="com.selectScores.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,9 +11,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%ArrayList<ArrayList<String>> list = ChooseInCollege.getlist("0011", "105");
-for(int i = 0 ; i < list.size() ; i++) {
-	 out.println(list.get(i));
-	} %>
+<%
+ArrayList<ArrayList<String>> list2 = XiangMuAnPai.selectSaiChengAnPai();
+System.out.println(list2.toString());
+%>
 </body>
 </html>

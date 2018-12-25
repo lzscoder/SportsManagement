@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.sportproject.*" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,14 +48,19 @@
 <td align="center">比赛地点</td>
 <td align="center">报名</td>
 </tr>
-<%for(int i=0;i<1;i++){%>
+<%
+String mUserName = (String)session.getAttribute("USERNAME");
+//System.out.println(mUserName);
+ArrayList<ArrayList<String>> list2 = Project.pullProject(mUserName);
+
+for(int i=0;i<list2.size();i++){%>
 <tr>
-<td align="center"> </td>
-<td align="center"> </td>
-<td align="center"> </td>
-<td align="center"> </td>
-<td align="center"> </td>
-<td align="center"> <button type="submit" name="baoming" value="" >报名</button></td>
+<td align="center"><%=list2.get(i).get(0)%></td>
+<td align="center"><%=list2.get(i).get(1)%></td>
+<td align="center"><%=list2.get(i).get(2)%></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><button type="submit" name="baoming" value="" >报名</button></td>
 </tr>
 <%}%>
 
@@ -88,12 +95,14 @@
                 </tr>
             </thead>
             <tbody >
-            <%for(int i=0;i<1;i++){%>
+            <%
+            ArrayList<ArrayList<String>> list3 = Project.selectProject(mUserName);
+            for(int i=0;i<list3.size();i++){%>
                <tr>
-                 <td align="center"> </td>
-                 <td align="center"> </td>
-                 <td align="center"> </td>
-                 <td align="center"> </td>
+                 <td align="center"><%=list3.get(i).get(0)%></td>
+                 <td align="center"><%=list3.get(i).get(1)%></td>
+                 <td align="center"><%=list3.get(i).get(2)%></td>
+                 <td align="center"><%=list3.get(i).get(3)%></td>
                  <td align="center"> <button type="submit" name="baoming" value="" >退选</button> </td>
                </tr>
               <%}%>
