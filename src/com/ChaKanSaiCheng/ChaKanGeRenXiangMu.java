@@ -57,7 +57,7 @@ public class ChaKanGeRenXiangMu {
 			con = DBConnection.getConnection();
 			String sql = "select * from college_xueyuan,student_xuesheng,student_yundongy where "
 					+ "(student_xuesheng.XueYuan=college_xueyuan.XueYuanBH) and (student_xuesheng.XueHao=student_yundongy.XueHao) "
-					+ "and student_xuesheng.XueHao='105032016081' ";
+					+ "and student_xuesheng.XueHao= '"+StudentID+"'";
 			Statement statement = con.createStatement();
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
