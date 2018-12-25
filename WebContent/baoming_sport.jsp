@@ -18,11 +18,12 @@
   <tr bgcolor="#804040">
     <td><table border="0" cellspacing="0" cellpadding="0" class="nav">
   <tr>
-    <td width="150" height="45" align="center" valign="middle"><a href="index_sport.jsp">赛事概况</a></td>
-    <td width="150" height="45" align="center" valign="middle"><a href="baoming_sport.jsp">赛事报名</a></td>
-    <td width="150" height="45" align="center" valign="middle"><a href="information_sport.jsp">个人比赛详情</a></td>
-    <td width="150" height="45" align="center" valign="middle"><a href="score_sport.jsp">成绩查询</a></td>
-    <td width="150" height="45" align="center" valign="middle"><a href="login.jsp">退出系统</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="index_sport.jsp">赛事概况</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="arrange_sport.jsp">查看赛程</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="baoming_sport.jsp">赛事报名</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="information_sport.jsp">个人比赛详情</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="score_sport.jsp">成绩查询</a></td>
+    <td width="120" height="45" align="center" valign="middle"><a href="login.jsp">退出系统</a></td>
   </tr>
     </table>
 </td>
@@ -35,13 +36,12 @@
     </td>
   </tr>
 </table><br/>
+<form action="" method="post">
 <table border="2" width="1000" >
 <tr bgcolor="#b64747">
 <td align="center">项目编号</td>
 <td align="center">项目名称</td>
 <td align="center">性别限制</td>
-<td align="center">最大容量</td>
-<td align="center">已报名人数</td>
 <td align="center">比赛时间</td>
 <td align="center">比赛地点</td>
 <td align="center">报名</td>
@@ -53,13 +53,12 @@
 <td align="center"> </td>
 <td align="center"> </td>
 <td align="center"> </td>
-<td align="center"> </td>
-<td align="center"> </td>
-<td align="center"><input type="submit" value="报名" onclick="add(this)" /></td>
+<td align="center"> <button type="submit" name="baoming" value="" >报名</button></td>
 </tr>
 <%}%>
 
 </table>
+</form>
 <table>
 <tr>
     <td>
@@ -77,6 +76,7 @@
 </table>
 </div>
 <br/>
+<form action="" method="post">
         <table border="2" width="1000"  >
             <thead>
                 <tr bgcolor="#b64747">
@@ -87,8 +87,16 @@
                 <th>退选</th>
                 </tr>
             </thead>
-            <tbody id="goods">
-               
+            <tbody >
+            <%for(int i=0;i<1;i++){%>
+               <tr>
+                 <td align="center"> </td>
+                 <td align="center"> </td>
+                 <td align="center"> </td>
+                 <td align="center"> </td>
+                 <td align="center"> <button type="submit" name="baoming" value="" >退选</button> </td>
+               </tr>
+              <%}%>
             </tbody>
             <tfoot>
 
@@ -96,55 +104,12 @@
             </tfoot>
             
         </table><br/><br/><br/>
+    </form>
     </body>
-    <script type="text/javascript">
-        //this js中指当前对象
-        function add(btn){
-            var tr=btn.parentNode.parentNode;
-            var tds=tr.getElementsByTagName("td");
-            var itemnum=tds[0].innerHTML;
-            var itemname=tds[1].innerHTML;
-            var itemplace=tds[5].innerHTML;
-            var itemtime=tds[6].innerHTML;
-            var tbody=document.getElementById("goods");
-            var row=tbody.insertRow();
-            row.innerHTML="<td align='center'>"+itemnum+"</td>"+
-        "<td align='center'>"+itemname+"</td>"+
-        "<td align='center'>"+itemplace+"</td>"+
-        "<td align='center'>"+itemtime+"</td>"+
-        "<td align='center'>"+
-            "<input type='button' value='X' onclick='del(this)'/>"+
-        "</td>"+
-        "</tr>"
 
-        }
-       
-        function change(btn,n){
-        var inputs = btn.parentNode.getElementsByTagName("input");
-        var amount = parseInt(inputs[1].value);
-        if(amount<=1 && n<0){
-            return;
-        }
-        inputs[1].value = amount + n;
-        amount = inputs[1].value;
-        var tr = btn.parentNode.parentNode;
-        var tds = tr.getElementsByTagName("td");
-        var price = parseFloat(tds[1].innerHTML);
-        var m = price * amount;
-        tds[3].innerHTML = m;
-        total();
-    }
-
-        function del(i){
-            var tr=i.parentNode.parentNode;
-            tr.parentNode.removeChild(tr);
-            total();
-        }
-    </script>
   
   
-  
-  
+   
 <table height="50" bgcolor="#804040" width="1000" style="color:#FFFFFF;">
   <tr>
     <td height="50" align="center" valign="middle" bgcolor="#804040" width="1000" style="color:#FFFFFF;">欢迎使用运动员管理系统</td>
