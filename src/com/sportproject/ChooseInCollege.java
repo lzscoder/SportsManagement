@@ -46,6 +46,7 @@ public class ChooseInCollege {
 			ptmt.setString(2, XueHao);
 			ptmt.setString(3, XiangMuBH);
 			ptmt.execute();
+			sportNo(XueHao.substring(0, 3),XueHao);
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -67,6 +68,35 @@ public class ChooseInCollege {
 			ptmt1.setString(3, XiangMuBH);
 			ptmt1.execute();
 		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void sportNo(String XYID,String XueHao) {
+		String sql = "select YunDongYBH from student_yundongy where XueHao like '"+XYID+"%' order by YunDongYBH desc";
+		String sql1 = "select YunDongYBH from student_yundongy where XueHao='"+XueHao+"'"; 
+		try {
+			Connection con = DBConnection.getConnection();
+			Statement statement=con.createStatement();
+			ResultSet rs=statement.executeQuery(sql1);
+			if(rs.next()) {
+				//已有编号
+				return;
+			}else {
+				System.out.println(666);
+				rs=statement.executeQuery(sql);
+				rs.next();
+				String s1 = rs.getString("YunDongYBH");
+				int i=Integer.parseInt(s1);
+				System.out.println(i);
+				i++;
+				String s = "insert into student_yundongy (YunDongYBH,XueHao) values (?,?)";
+				PreparedStatement ptmt = (PreparedStatement) con.prepareStatement(s);
+				ptmt.setString(1, i+"");
+				ptmt.setString(2, XueHao);
+				ptmt.execute();
+			}
+		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 	}
