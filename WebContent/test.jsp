@@ -12,8 +12,8 @@
 </head>
 <body>
 <%
-ArrayList<ArrayList<String>> list2 = XiangMuAnPai.selectSaiChengAnPai();
-System.out.println(list2.toString());
+ArrayList<ArrayList<String>> list2 = XiangMuAnPai.saiChengAnPai1("0011");
+out.print(list2.toString());
 %>
 </body>
 </html>

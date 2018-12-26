@@ -14,13 +14,222 @@ import com.geotest.DBConnection;
 
 public class XiangMuAnPai {
 	
-	
-	
-	public static ArrayList<ArrayList<String>> saiChengAnPai(String XiangMuBH)
+	public static ArrayList<ArrayList<String>> saiChengAnPai1(String XiangMuBH)
 	{
 		ArrayList<ArrayList<String>> list2 = new ArrayList<ArrayList<String>>();
 		
-		if(XiangMuBH.charAt(1)=='2')//团体项目的安排，并且只有田赛中有团体项目
+		if(XiangMuBH.charAt(1)=='2')
+		{
+			Connection con;
+			con = DBConnection.getConnection();
+			Statement statement;
+			try {
+				statement = con.createStatement();
+				String selectXiangmu1 = "select YunDongYBH,XueYuanMC,ZhuanYe,NianJi,XingMing,BiSaiDD from \r\n" + 
+						"student_xuesheng,student_yundongy,student_baoming,item_xiangmu,\r\n" + 
+						"college_xueyuan where (\r\n" + 
+						"college_xueyuan.XueYuanBH = student_xuesheng.XueYuanBH and\r\n" + 
+						"student_baoming.XiangMu1TG='1' and \r\n" + 
+						"student_baoming.BaoMingXM1 = item_xiangmu.XiangMuBH and \r\n" + 
+						"student_yundongy.XueHao = student_baoming.XueHao and \r\n" + 
+						"student_xuesheng.XueHao = student_yundongy.XueHao and \r\n" + 
+						"item_xiangmu.XiangMuBH= \""+XiangMuBH+"\");";
+				ResultSet reasultSearch=statement.executeQuery(selectXiangmu1);
+				
+				while(reasultSearch.next())
+				{
+					ArrayList<String> list = new ArrayList<String>();
+					list.add(reasultSearch.getString("YunDongYBH"));
+					list.add(reasultSearch.getString("XueYuanMC"));
+					list.add(reasultSearch.getString("ZhuanYe"));
+					list.add(reasultSearch.getString("NianJi"));
+					list.add(reasultSearch.getString("XingMing"));
+					list.add("0");
+					list.add("0");
+					list.add(reasultSearch.getString("BiSaiDD"));
+					list2.add(list);
+				}
+				
+				String selectXiangmu2 = "select YunDongYBH,XueYuanMC,ZhuanYe,NianJi,XingMing from \r\n" + 
+						"student_xuesheng,student_yundongy,student_baoming,item_xiangmu,\r\n" + 
+						"college_xueyuan where (\r\n" + 
+						"college_xueyuan.XueYuanBH = student_xuesheng.XueYuanBH and\r\n" + 
+						"student_baoming.XiangMu2TG='1' and \r\n" + 
+						"student_baoming.BaoMingXM2 = item_xiangmu.XiangMuBH and \r\n" + 
+						"student_yundongy.XueHao = student_baoming.XueHao and \r\n" + 
+						"student_xuesheng.XueHao = student_yundongy.XueHao and \r\n" + 
+						"item_xiangmu.XiangMuBH= \""+XiangMuBH+"\");";
+				reasultSearch=statement.executeQuery(selectXiangmu2);
+				
+				while(reasultSearch.next())
+				{
+					ArrayList<String> list = new ArrayList<String>();
+					list.add(reasultSearch.getString("YunDongYBH"));
+					list.add(reasultSearch.getString("XueYuanMC"));
+					list.add(reasultSearch.getString("ZhuanYe"));
+					list.add(reasultSearch.getString("NianJi"));
+					list.add(reasultSearch.getString("XingMing"));
+					list.add("0");
+					list.add("0");
+					list.add(reasultSearch.getString("BiSaiDD"));
+					list2.add(list);
+				}
+				
+				
+				Collections.sort(list2, new Comparator<ArrayList<String>>() {
+					@Override
+					public int compare(ArrayList<String> o1, ArrayList<String> o2) {
+	
+						
+						if(Integer.parseInt(o1.get(1))-Integer.parseInt(o2.get(1))==0)
+							return Integer.parseInt(o1.get(1))-Integer.parseInt(o2.get(1));
+						else
+							return Integer.parseInt(o1.get(1))-Integer.parseInt(o2.get(1));
+					}
+		        });
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		}
+		else if(XiangMuBH.charAt(0)=='0')
+		{
+			Connection con;
+			con = DBConnection.getConnection();
+			try {
+				Statement statement = con.createStatement();
+				String selectXiangmu1 = "select YunDongYBH,XueYuanMC,ZhuanYe,NianJi,XingMing,BiSaiDD from \r\n" + 
+				"student_xuesheng,student_yundongy,student_baoming,item_xiangmu,\r\n" + 
+				"college_xueyuan where (\r\n" + 
+				"college_xueyuan.XueYuanBH = student_xuesheng.XueYuanBH and\r\n" + 
+				"student_baoming.XiangMu1TG='1' and \r\n" + 
+				"student_baoming.BaoMingXM1 = item_xiangmu.XiangMuBH and \r\n" + 
+				"student_yundongy.XueHao = student_baoming.XueHao and \r\n" + 
+				"student_xuesheng.XueHao = student_yundongy.XueHao and \r\n" + 
+				"item_xiangmu.XiangMuBH= \""+XiangMuBH+"\");";
+				
+				ResultSet reasultSearch=statement.executeQuery(selectXiangmu1);
+				while(reasultSearch.next())
+				{
+					ArrayList<String> list = new ArrayList<String>();
+					list.add(reasultSearch.getString("YunDongYBH"));
+					list.add(reasultSearch.getString("XueYuanMC"));
+					list.add(reasultSearch.getString("ZhuanYe"));
+					list.add(reasultSearch.getString("NianJi"));
+					list.add(reasultSearch.getString("XingMing"));
+					list.add("0");
+					list.add("0");
+					list.add(reasultSearch.getString("BiSaiDD"));
+					list2.add(list);
+				}
+				
+				String selectXiangmu2 = "select YunDongYBH,XueYuanMC,ZhuanYe,NianJi,XingMing,BiSaiDD from \r\n" + 
+						"student_xuesheng,student_yundongy,student_baoming,item_xiangmu,\r\n" + 
+						"college_xueyuan where (\r\n" + 
+						"college_xueyuan.XueYuanBH = student_xuesheng.XueYuanBH and\r\n" + 
+						"student_baoming.XiangMu2TG='1' and \r\n" + 
+						"student_baoming.BaoMingXM2 = item_xiangmu.XiangMuBH and \r\n" + 
+						"student_yundongy.XueHao = student_baoming.XueHao and \r\n" + 
+						"student_xuesheng.XueHao = student_yundongy.XueHao and \r\n" + 
+						"item_xiangmu.XiangMuBH= \""+XiangMuBH+"\");";
+				reasultSearch=statement.executeQuery(selectXiangmu2);
+				
+				
+				while(reasultSearch.next())
+				{
+					ArrayList<String> list = new ArrayList<String>();
+					list.add(reasultSearch.getString("YunDongYBH"));
+					list.add(reasultSearch.getString("XueYuanMC"));
+					list.add(reasultSearch.getString("ZhuanYe"));
+					list.add(reasultSearch.getString("NianJi"));
+					list.add(reasultSearch.getString("XingMing"));
+					list.add("0");
+					list.add("0");
+					list.add(reasultSearch.getString("BiSaiDD"));
+					list2.add(list);
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		else
+		{
+			String selectXiangmu1 = "select YunDongYBH,XueYuanMC,ZhuanYe,NianJi,XingMing,BiSaiDD from \r\n" + 
+					"student_xuesheng,student_yundongy,student_baoming,item_xiangmu,\r\n" + 
+					"college_xueyuan where (\r\n" + 
+					"college_xueyuan.XueYuanBH = student_xuesheng.XueYuanBH and\r\n" + 
+					"student_baoming.XiangMu1TG='1' and \r\n" + 
+					"student_baoming.BaoMingXM1 = item_xiangmu.XiangMuBH and \r\n" + 
+					"student_yundongy.XueHao = student_baoming.XueHao and \r\n" + 
+					"student_xuesheng.XueHao = student_yundongy.XueHao and \r\n" + 
+					"item_xiangmu.XiangMuBH= \""+XiangMuBH+"\");";
+			
+			Connection con;
+			con = DBConnection.getConnection();
+
+			try {
+				Statement statement = con.createStatement();
+				ResultSet reasultSearch=statement.executeQuery(selectXiangmu1);
+				while(reasultSearch.next())
+				{
+					ArrayList<String> list = new ArrayList<String>();
+					list.add(reasultSearch.getString("YunDongYBH"));
+					list.add(reasultSearch.getString("XueYuanMC"));
+					list.add(reasultSearch.getString("ZhuanYe"));
+					list.add(reasultSearch.getString("NianJi"));
+					list.add(reasultSearch.getString("XingMing"));
+					list.add(reasultSearch.getString("BiSaiDD"));
+					list.add("0");
+					list.add("0");
+					list.add(reasultSearch.getString("BiSaiDD"));
+					list2.add(list);
+				}
+				
+				String selectXiangmu2 = "select YunDongYBH,XueYuanMC,ZhuanYe,NianJi,XingMing,BiSaiDD from \r\n" + 
+						"student_xuesheng,student_yundongy,student_baoming,item_xiangmu,\r\n" + 
+						"college_xueyuan where (\r\n" + 
+						"college_xueyuan.XueYuanBH = student_xuesheng.XueYuanBH and\r\n" + 
+						"student_baoming.XiangMu2TG='1' and \r\n" + 
+						"student_baoming.BaoMingXM2 = item_xiangmu.XiangMuBH and \r\n" + 
+						"student_yundongy.XueHao = student_baoming.XueHao and \r\n" + 
+						"student_xuesheng.XueHao = student_yundongy.XueHao and \r\n" + 
+						"item_xiangmu.XiangMuBH= \""+XiangMuBH+"\");";
+				
+				
+				reasultSearch=statement.executeQuery(selectXiangmu2);
+				while(reasultSearch.next())
+				{
+					ArrayList<String> list = new ArrayList<String>();
+					list.add(reasultSearch.getString("YunDongYBH"));
+					list.add(reasultSearch.getString("XueYuanMC"));
+					list.add(reasultSearch.getString("ZhuanYe"));
+					list.add(reasultSearch.getString("NianJi"));
+					list.add(reasultSearch.getString("XingMing"));
+					list.add("0");
+					list.add("0");
+					list.add(reasultSearch.getString("BiSaiDD"));
+					list2.add(list);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		}
+		return list2;
+	}
+	
+	public static ArrayList<ArrayList<String>> saiChengAnPai2(String XiangMuBH)
+	{
+		ArrayList<ArrayList<String>> list2 = new ArrayList<ArrayList<String>>();
+		
+		if(XiangMuBH.charAt(1)=='2')
 		{
 			Connection con;
 			con = DBConnection.getConnection();
@@ -81,10 +290,7 @@ public class XiangMuAnPai {
 				Collections.sort(list2, new Comparator<ArrayList<String>>() {
 					@Override
 					public int compare(ArrayList<String> o1, ArrayList<String> o2) {
-						// TODO Auto-generated method stub
-						
-						//排列学院编号，再排列个人的编号
-						//BaoMingXM2,YunDongYBH,1,tmp,BiSaiDD,XueYuanBH
+	
 						
 						if(Integer.parseInt(o1.get(1))-Integer.parseInt(o2.get(1))==0)
 							return Integer.parseInt(o1.get(1))-Integer.parseInt(o2.get(1));
@@ -106,7 +312,7 @@ public class XiangMuAnPai {
 					{
 						j++;
 					}
-					if(j>8)//增加一个小组，编号重新设置为1
+					if(j>8)
 					{
 						i++;
 						j = 1;
@@ -121,15 +327,10 @@ public class XiangMuAnPai {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			//获取第一部分BaoMingXM1
 		
 		}
-		
-		
-		//已经是田赛还是径赛来区分
 		else if(XiangMuBH.charAt(0)=='0')
 		{
-			//直接按照顺序编号
 			Connection con;
 			con = DBConnection.getConnection();
 			try {
@@ -194,7 +395,6 @@ public class XiangMuAnPai {
 		}
 		else
 		{
-			//是径赛
 			String selectXiangmu1 = "select YunDongYBH,XueYuanMC,ZhuanYe,NianJi,XingMing,BiSaiDD from \r\n" + 
 					"student_xuesheng,student_yundongy,student_baoming,item_xiangmu,\r\n" + 
 					"college_xueyuan where (\r\n" + 
@@ -255,7 +455,7 @@ public class XiangMuAnPai {
 				for(int i = 0;i<list2.size();i++)
 				{
 					list2.get(i).set(5,""+(i/8+1));
-					list2.get(i).set(6,""+(i%9+1));
+					list2.get(i).set(6,""+(i%8+1));
 				}
 				
 				
@@ -282,9 +482,11 @@ public class XiangMuAnPai {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		//写入到数据库中
 		return list2;
 	}
+	
+	
+	
 	
 	
 	
