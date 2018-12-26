@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
  <%@  page  import="com.sportproject.*" %>
   <%@  page  import="java.util.ArrayList" %>
+ <%@ page import="com.createXiangMuAnPai.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +36,7 @@
     </td>
   </tr>
 </table><br/>
-<form action="">
+<form action="" method="post">
 <table border="2" width="1000" >
 <tr>
 <tr bgcolor="#b64747">
@@ -47,15 +48,19 @@
 <td align="center" width="50px">组别</td>
 <td align="center" width="50px">位置</td>
 </tr>
-<%for(int i=0;i<1;i++){%>
+<%
+String item = request.getParameter("sportitem");
+ArrayList<ArrayList<String>> list2 = XiangMuAnPai.saiChengAnPai1(item);
+
+for(int i=0;i<list2.size();i++){%>
 <tr>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
-<td align="center" width="200px"></td>
-<td align="center" width="50px"></td>
-<td align="center" width="100px"></td>
-<td align="center" width="50px"></td>
-<td align="center" width="50px"></td>
+<td align="center" width="300px"><%=list2.get(i).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(i).get(1) %></td>
+<td align="center" width="200px"><%=list2.get(i).get(2) %></td>
+<td align="center" width="50px"><%=list2.get(i).get(3) %></td>
+<td align="center" width="100px"><%=list2.get(i).get(4) %></td>
+<td align="center" width="50px"><%=list2.get(i).get(5) %></td>
+<td align="center" width="50px"><%=list2.get(i).get(6) %></td>
 </tr>
 <%}%>
 </table><br/>
@@ -71,7 +76,12 @@
 
 </form>
     
-  
+  <%
+  String s = request.getParameter("sub");
+  if(s!=null) {
+	  list2 = XiangMuAnPai.saiChengAnPai2(item);
+  }
+  %>
   
 <table height="50" bgcolor="#804040" width="1000" style="color:#FFFFFF;">
   <tr>

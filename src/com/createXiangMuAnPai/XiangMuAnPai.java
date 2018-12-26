@@ -18,6 +18,55 @@ public class XiangMuAnPai {
 	{
 		ArrayList<ArrayList<String>> list2 = new ArrayList<ArrayList<String>>();
 		
+		Connection c;
+		c = DBConnection.getConnection();
+		
+		try {
+			Statement s1 = c.createStatement();
+			String select = "select * from item_saicheng where XiangMuBH = "+XiangMuBH+";";
+			ResultSet r1=s1.executeQuery(select);
+			
+			if(r1.next())
+			{
+				Statement s2 = c.createStatement();
+				ResultSet r2=s2.executeQuery(select);
+				ArrayList<ArrayList<String>> list22 = new ArrayList<ArrayList<String>>();
+				
+				while(r2.next())
+				{
+					ArrayList<String> list = new ArrayList<String>();
+					
+					String ssString = r2.getString("YunDongYBH");
+					
+					String str = "select XueYuanMC,ZhuanYe,NianJi,XingMing from \r\n" + 
+							"							college_xueyuan,student_xuesheng,student_yundongy where \r\n" + 
+							"							(student_xuesheng.XueHao=student_yundongy.XueHao and \r\n" + 
+							"							student_xuesheng.XueYuanBH = college_xueyuan.XueYuanBH and\r\n" + 
+							"							student_yundongy.YunDongYBH = "+ssString+");";
+					
+					Statement s3 = c.createStatement();
+					ResultSet r3=s3.executeQuery(str);
+					r3.next();
+					System.out.println("6");
+					list.add(ssString);
+					
+					list.add(r3.getString("XueYuanMC"));
+					list.add(r3.getString("ZhuanYe"));
+					list.add(r3.getString("NianJi"));
+					list.add(r3.getString("XingMing"));
+					
+					
+					list.add(r2.getString("ZuBie"));
+					list.add(r2.getString("XuHao"));
+					list22.add(list);
+				}
+				
+				return list22;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if(XiangMuBH.charAt(1)=='2')
 		{
 			Connection con;
