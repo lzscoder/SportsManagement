@@ -55,15 +55,20 @@ ArrayList<ArrayList<String>> list2 = Project.pullProject(mUserName);
 
 for(int i=0;i<list2.size();i++){%>
 <tr>
-<td align="center"><%=list2.get(i).get(0)%></td>
+<td align="center"><input name="<%=list2.get(i).get(0)%>_add" value=<%=list2.get(i).get(0)%> type="hidden"><%=list2.get(i).get(0)%></td>
 <td align="center"><%=list2.get(i).get(1)%></td>
 <td align="center"><%=list2.get(i).get(2)%></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"><button type="submit" name="baoming" value="" >报名</button></td>
+<td align="center"><%=list2.get(i).get(4) %></td>
+<td align="center"><%=list2.get(i).get(3) %></td>
+<td align="center"><button type="submit" name="baoming" value="<%=list2.get(i).get(0)%>" >报名</button></td>
 </tr>
 <%}%>
-
+<%
+String s= request.getParameter("baoming");
+if(s!=null) {
+	Project.pushProject(s, mUserName);
+}
+%>
 </table>
 </form>
 <table>
@@ -99,11 +104,11 @@ for(int i=0;i<list2.size();i++){%>
             ArrayList<ArrayList<String>> list3 = Project.selectProject(mUserName);
             for(int i=0;i<list3.size();i++){%>
                <tr>
-                 <td align="center"><%=list3.get(i).get(0)%></td>
+                 <td align="center"><input name="<%=list3.get(i).get(0)%>_delete" value=<%=list3.get(i).get(0)%> type="hidden"><%=list3.get(i).get(0)%></td>
                  <td align="center"><%=list3.get(i).get(1)%></td>
                  <td align="center"><%=list3.get(i).get(2)%></td>
                  <td align="center"><%=list3.get(i).get(3)%></td>
-                 <td align="center"> <button type="submit" name="baoming" value="" >退选</button> </td>
+                 <td align="center"> <button type="submit" name="tuixuan" value="<%=list3.get(i).get(0)%>" >退选</button> </td>
                </tr>
               <%}%>
             </tbody>
@@ -115,9 +120,14 @@ for(int i=0;i<list2.size();i++){%>
         </table><br/><br/><br/>
     </form>
     </body>
-
+<%
+String t= request.getParameter("tuixuan");
+if(t!=null) {
+	Project.deleteProject(t, mUserName);
+}
+%>
   
-  
+ 
    
 <table height="50" bgcolor="#804040" width="1000" style="color:#FFFFFF;">
   <tr>
