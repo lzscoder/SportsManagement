@@ -21,7 +21,7 @@ public class InputReasult {
 //					+ "((BaoMingXM1='"+XiangMuBH+"' and XiangMu1TG=1) or (BaoMingXM2='"+XiangMuBH+"' and XiangMu2TG=1)) and XueYuan=XueYuanBH order by student_yundongy.YunDongYBH";
 			String sql = "select student_yundongy.YunDongYBH,XueYuanMC,XingMing from student_xuesheng,student_baoming,student_yundongy,college_xueyuan where (student_baoming.XueHao=student_yundongy.XueHao) and "
 					+ "(student_xuesheng.XueHao=student_baoming.XueHao) and "
-					+ "((BaoMingXM1='"+XiangMuBH+"' and XiangMu1TG=1) or (BaoMingXM2='"+XiangMuBH+"' and XiangMu2TG=1)) and XueYuan=XueYuanBH order by student_yundongy.YunDongYBH";
+					+ "((BaoMingXM1='"+XiangMuBH+"' and XiangMu1TG=1) or (BaoMingXM2='"+XiangMuBH+"' and XiangMu2TG=1)) and student_xuesheng.XueYuanBH=college_xueyuan.XueYuanBH order by student_yundongy.YunDongYBH";
 			Statement statement=con.createStatement();
 			ResultSet rs=statement.executeQuery(sql);
 			while(rs.next()) {
