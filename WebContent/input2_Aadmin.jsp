@@ -50,7 +50,8 @@ ArrayList<ArrayList<String>> list1 = InputReasult.gelistXY();
 <td align="center">积分</td>
 </tr>
 
-<%if(list.size()>0) {for(int i=0;i<list.size();i++){%>
+<%if(!itemID.equals("0239")&&!itemID.equals("0240")&&!itemID.equals("0241")&&!itemID.equals("1009")&&!itemID.equals("1010")&&!itemID.equals("1037")&&!itemID.equals("1038")&&!itemID.equals("1127")&&
+		!itemID.equals("1128")&&!itemID.equals("1235")&&!itemID.equals("1236")) {for(int i=0;i<list.size();i++){%>
 <tr>
 <td align="center"><input name="<%=list.get(i).get(0) %>_id" value=<%=list.get(i).get(0) %> type="hidden"><%=list.get(i).get(0) %> </td>
 <td align="center"><%=list.get(i).get(2) %> </td>
@@ -80,7 +81,8 @@ else {
 </table>
  </form>
  <%
- if(list.size()>0) {
+ if(!itemID.equals("0239")&&!itemID.equals("0240")&&!itemID.equals("0241")&&!itemID.equals("1009")&&!itemID.equals("1010")&&!itemID.equals("1037")&&!itemID.equals("1038")&&!itemID.equals("1127")&&
+			!itemID.equals("1128")&&!itemID.equals("1235")&&!itemID.equals("1236")) {
 	 for(int i=0;i<list.size();i++) {
 		 String YunDongYBH = list.get(i).get(0);
 		 String s = list.get(i).get(0);

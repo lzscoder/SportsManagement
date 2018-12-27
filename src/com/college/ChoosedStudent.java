@@ -11,7 +11,8 @@ public class ChoosedStudent {
 		ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>> ();
 		String sql ="select * from student_baoming,student_xuesheng where "
 				+ "student_baoming.XueHao=student_xuesheng.XueHao and "
-				+ "((BaoMingXM1='"+item+"' and XiangMu1TG=1) or (BaoMingXM2='"+item+"' and XiangMu2TG=1))";
+				+ "((BaoMingXM1='"+item+"' and XiangMu1TG=1) or (BaoMingXM2='"+item+"' and XiangMu2TG=1)) and "
+						+ "student_baoming.XueHao like '"+XueYuan+"%'";
 		try {
 			Connection con =DBConnection.getConnection();
 			Statement statement=con.createStatement();

@@ -87,14 +87,22 @@ public class ChooseInCollege {
 				rs=statement.executeQuery(sql);
 				rs.next();
 				String s1 = rs.getString("YunDongYBH");
-				int i=Integer.parseInt(s1);
-				System.out.println(i);
-				i++;
-				String s = "insert into student_yundongy (YunDongYBH,XueHao) values (?,?)";
-				PreparedStatement ptmt = (PreparedStatement) con.prepareStatement(s);
-				ptmt.setString(1, i+"");
-				ptmt.setString(2, XueHao);
-				ptmt.execute();
+				if(s1!=null) {
+					int i=Integer.parseInt(s1);
+					System.out.println(i);
+					i++;
+					String s = "insert into student_yundongy (YunDongYBH,XueHao) values (?,?)";
+					PreparedStatement ptmt = (PreparedStatement) con.prepareStatement(s);
+					ptmt.setString(1, i+"");
+					ptmt.setString(2, XueHao);
+					ptmt.execute();
+				}else {
+					String s = "insert into student_yundongy (YunDongYBH,XueHao) values (?,?)";
+					PreparedStatement ptmt = (PreparedStatement) con.prepareStatement(s);
+					ptmt.setString(1, XYID+"01");
+					ptmt.setString(2, XueHao);
+					ptmt.execute();
+				}
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();

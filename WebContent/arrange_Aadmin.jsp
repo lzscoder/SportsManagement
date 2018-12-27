@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
  <%@  page  import="com.sportproject.*" %>
   <%@  page  import="java.util.ArrayList" %>
+<%@ page import="com.createXiangMuAnPai.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,6 +37,11 @@
   </tr>
 </table>
 
+<%
+
+ArrayList<ArrayList<String>> list2 = XiangMuAnPai.selectSaiChengAnPai();
+
+%>
 <table>
 <tr>
     <td>
@@ -53,30 +59,30 @@
 
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">早上8：00-9：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(0).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(0).get(1)%></td>
 </tr>
 
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">早上9：00-10：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(1).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(1).get(1)%></td>
 </tr>
 
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">早上10：00-11：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(2).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(2).get(1)%></td>
 </tr>
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">下午2：00-3：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(3).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(3).get(1)%></td>
 </tr>
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">下午3：00-4：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(4).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(4).get(1)%></td>
 </tr>
 </table><br/>
 
@@ -103,30 +109,30 @@
 
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">早上8：00-9：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(5).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(5).get(1)%></td>
 </tr>
 
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">早上9：00-10：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(6).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(6).get(1)%></td>
 </tr>
 
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">早上10：00-11：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(7).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(7).get(1)%></td>
 </tr>
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">下午2：00-3：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(8).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(8).get(1)%></td>
 </tr>
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">下午3：00-4：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(9).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(9).get(1)%></td>
 </tr>
 </table><br/>
 
@@ -155,30 +161,30 @@
 
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">早上8：00-9：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(10).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(10).get(1)%></td>
 </tr>
 
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">早上9：00-10：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(11).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(11).get(1)%></td>
 </tr>
 
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">早上10：00-11：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(12).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(12).get(1)%></td>
 </tr>
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">下午2：00-3：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(13).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(13).get(1)%></td>
 </tr>
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">下午3：00-4：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(14).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(14).get(1)%></td>
 </tr>
 </table><br/>
 
@@ -206,30 +212,30 @@
 
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">早上8：00-9：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(15).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(15).get(1)%></td>
 </tr>
 
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">早上9：00-10：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(16).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(16).get(1)%></td>
 </tr>
 
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">早上10：00-11：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(17).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(17).get(1)%></td>
 </tr>
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">下午2：00-3：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(18).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(18).get(1)%></td>
 </tr>
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">下午3：00-4：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(19).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(19).get(1)%></td>
 </tr>
 </table><br/>
 
@@ -260,30 +266,30 @@
 
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">早上8：00-9：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(20).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(20).get(1)%></td>
 </tr>
 
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">早上9：00-10：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(21).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(21).get(1)%></td>
 </tr>
 
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">早上10：00-11：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(22).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(22).get(1)%></td>
 </tr>
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">下午2：00-3：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(23).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(23).get(1)%></td>
 </tr>
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">下午3：00-4：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(24).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(24).get(1)%></td>
 </tr>
 </table><br/>
 
@@ -313,30 +319,30 @@
 
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">早上8：00-9：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(25).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(25).get(1)%></td>
 </tr>
 
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">早上9：00-10：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(26).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(26).get(1)%></td>
 </tr>
 
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">早上10：00-11：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(27).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(27).get(1)%></td>
 </tr>
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">下午2：00-3：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(28).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(28).get(1)%></td>
 </tr>
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">下午3：00-4：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(29).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(29).get(1)%></td>
 </tr>
 </table><br/>
 
@@ -361,30 +367,30 @@
 
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">早上8：00-9：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(30).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(30).get(1)%></td>
 </tr>
 
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">早上9：00-10：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(31).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(31).get(1)%></td>
 </tr>
 
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">早上10：00-11：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(32).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(32).get(1)%></td>
 </tr>
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">下午2：00-3：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(33).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(34).get(1)%></td>
 </tr>
 <tr>
 <td align="center" width="400px" bgcolor="#b64747">下午3：00-4：00</td>
-<td align="center" width="300px"></td>
-<td align="center" width="300px"></td>
+<td align="center" width="300px"><%=list2.get(35).get(0)%></td>
+<td align="center" width="300px"><%=list2.get(35).get(1)%></td>
 </tr>
 </table><br/>
 

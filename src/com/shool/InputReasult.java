@@ -65,6 +65,7 @@ public class InputReasult {
 	
 	public static void inputGeRen(String YunDongYBH,String XiangMuBH,String ChengJi,int JiFen,int PaiMing) {
 		try {
+			System.out.println("geren");
 			Connection con = DBConnection.getConnection();
 			String delete = "delete from score_geren where YunDongYBH='"+YunDongYBH+"' and XiangMuBH='"+XiangMuBH+"'";
 			String sql = "insert into  score_geren (YunDongYBH,XiangMuBH,ChengJi,JiFen,PaiMing) values(?,?,?,?,?)";
@@ -85,6 +86,7 @@ public class InputReasult {
 	
 	public static void inputTuanTi(String XueYuanBH,String XiangMuBH,String ChengJi,int JiFen,int PaiMing) {
 		try {
+			System.out.println("tuanti");
 			Connection con = DBConnection.getConnection();
 			String delete = "delete from score_tuanti where XueYuanBH='"+XueYuanBH+"' and XiangMuBH='"+XiangMuBH+"'";
 			String sql = "insert into  score_tuanti (XueYuanBH,XiangMuBH,ChengJi,JiFen,PaiMing) values(?,?,?,?,?)";

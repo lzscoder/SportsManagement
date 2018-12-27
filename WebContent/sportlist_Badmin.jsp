@@ -88,7 +88,7 @@
     </td>
   </tr>
 </table>
-<form action="examine2_Badmin.jsp">
+<form action="sportlist2_Badmin.jsp">
 <table cellspacing="20px">
 <tr>
     <td><button type="submit" name="sportitem" value="1119"class="button button-caution button-rounded button-large" >100米</button></td>
