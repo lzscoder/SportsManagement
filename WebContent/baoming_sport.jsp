@@ -13,8 +13,10 @@
 <body>
 
 <%
-
- %>
+if(session.getAttribute("USERNAME")==null) {
+	response.sendRedirect("login.jsp");
+}
+%>
 <h1>运动员管理系统</h1> <br/> <br/>
 <table width="1000" bgcolor="#FFFFFF"border="0" cellpadding="0" cellspacing="0">
   <tr bgcolor="#804040">

@@ -12,7 +12,11 @@
 <link rel="stylesheet" type="text/css" href="button.css" />
 </head>
 <body>
-
+<%
+if(session.getAttribute("USERNAME")==null) {
+	response.sendRedirect("login.jsp");
+}
+%>
 <%
 
 String UserName = (String) session.getAttribute("USERNAME");

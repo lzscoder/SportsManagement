@@ -133,7 +133,7 @@ public class SelectScores {
 		//对学院的积分情况进行统计
 		public static ArrayList<ArrayList<String>> GetOrderOfJiFen()
 		{
-			ArrayList<ArrayList<String>> list3 = new ArrayList<ArrayList<String>>();
+			ArrayList<ArrayList<String>> back = new ArrayList<ArrayList<String>>();
 			String driverName="com.mysql.cj.jdbc.Driver";
 			try{
 			       Class.forName(driverName);
@@ -182,44 +182,68 @@ public class SelectScores {
 //				}
 				//从List转换到map
 				
-				HashMap<String,String> m = new HashMap<String,String>();
 				
 				for(ArrayList<String> list:list2)
 				{
-					if(m.get(list.get(0))==null)
+					int i = 0;
+					for(i = 0;i<back.size();i++)
 					{
-						m.put(list.get(0),list.get(1));
+						if(list.get(0).equals(back.get(0).get(0)))
+						{
+							//将back[i].get(1)  设置为list[1]+back[i].get(1)
+							
+							int a = Integer.parseInt((String)list.get(1));
+							int b = Integer.parseInt(back.get(i).get(1));
+							String str = (a+b)+"";
+							back.get(i).set(1,str);
+						}
 					}
-					else
+					if(i==back.size())
 					{
-						int n1 = Integer.parseInt((String) m.get(list.get(0)));
-						int n2 = Integer.parseInt(list.get(1));
-						m.put(list.get(0),(n1+n2)+"");
+						back.add(list);
 					}
 				}
+//				HashMap<String,String> m = new HashMap<String,String>();
+//				
+//				for(ArrayList<String> list:list2)
+//				{
+//					if(m.get(list.get(0))==null)
+//					{
+//						m.put(list.get(0),list.get(1));
+//					}
+//					else
+//					{
+//						int n1 = Integer.parseInt((String) m.get(list.get(0)));
+//						int n2 = Integer.parseInt(list.get(1));
+//						m.put(list.get(0),(n1+n2)+"");
+//					}
+//				}
 				
 				
-				for (String key : m.keySet()) 
-				{
-					ArrayList<String> list = new ArrayList<String>();
-					
-					list.add(key);
-					list.add(m.get(key));
-					list3.add(list);
-				}
-				 Collections.sort(list3, new SortByAge());
+//				for (String key : m.keySet()) 
+//				{
+//					ArrayList<String> list = new ArrayList<String>();
+//					
+//					list.add(key);
+//					list.add(m.get(key));
+//					list3.add(list);
+//				}
+				 Collections.sort(back, new SortByAge());
 		
 			}catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			int i = 1;
-			for(ArrayList<String> list:list3)
+			for(ArrayList<String> list:back)
 			{
+				System.out.println(list.toString());
 				list.add(""+i);
 				i++;
 			}
-			return list3;
+			
+			
+			return back;
 		}
 }
 class SortByAge implements Comparator 
@@ -228,6 +252,8 @@ class SortByAge implements Comparator
 	{
 		ArrayList<String> s1 = (ArrayList<String>) o1;
 		ArrayList<String> s2 = (ArrayList<String>) o2;
-		return s2.get(1).compareTo(s1.get(1));
+		int a = Integer.parseInt(s1.get(1));
+		int b = Integer.parseInt(s2.get(1));
+		return b-a;
 	}
 }

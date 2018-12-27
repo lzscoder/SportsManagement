@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page import="java.sql.*"%>
-   
+   <%@ page import="com.login.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,12 +70,27 @@
 					if(mPassword.equals(sqlPassword)) {
 						session.setAttribute("USERNAME", mUserName);
 						if("xuesheng".equals(mItem)) {
-							response.sendRedirect("index_sport.jsp");
+							if(judgeLogin.judgestudent(mUserName)){
+								session.setAttribute("judge", "1");
+								response.sendRedirect("changePassword.jsp");
+							}else{
+								response.sendRedirect("index_sport.jsp");
+							}
 						}
 						else if("xueyuan".equals(mItem)) {
-							response.sendRedirect("index_Badmin.jsp");
+							if(judgeLogin.judgecollege(mUserName)){
+								session.setAttribute("judge", "2");
+								response.sendRedirect("changePassword.jsp");
+							}else{
+								response.sendRedirect("index_Badmin.jsp");
+							}
 						}else if("xuexiao".equals(mItem)) {
-							response.sendRedirect("index_Aadmin.jsp");
+							if(judgeLogin.judgexuexiao(mUserName)){
+								session.setAttribute("judge", "3");
+								response.sendRedirect("changePassword.jsp");
+							}else{
+								response.sendRedirect("index_Aadmin.jsp");
+							}
 						}
 					}
 					else {

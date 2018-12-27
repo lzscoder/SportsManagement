@@ -11,7 +11,11 @@
 
 </head>
 <body>
-
+<%
+if(session.getAttribute("USERNAME")==null) {
+	response.sendRedirect("login.jsp");
+}
+%>
 <%
 String userName = (String) session.getAttribute("USERNAME");
 ArrayList<ArrayList<String>> list = SelectScores.SelectOwnScore(userName);

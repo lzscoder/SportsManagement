@@ -14,6 +14,11 @@
 </head>
 <body>
 <%
+if(session.getAttribute("USERNAME")==null) {
+	response.sendRedirect("login.jsp");
+}
+%>
+<%
 String itemname = request.getParameter("sportitem");
 ArrayList<ArrayList<String>> list2 = SelectScores.ScoreOfItem(itemname);
 %>

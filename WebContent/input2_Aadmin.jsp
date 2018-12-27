@@ -12,6 +12,11 @@
 </head>
 <body>
 <%
+if(session.getAttribute("USERNAME")==null) {
+	response.sendRedirect("login.jsp");
+}
+%>
+<%
 String itemID = request.getParameter("sportitem");
 ArrayList<ArrayList<String>> list = InputReasult.getListGR(itemID);
 ArrayList<ArrayList<String>> list1 = InputReasult.gelistXY();
