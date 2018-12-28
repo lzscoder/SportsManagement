@@ -147,8 +147,8 @@ public class Project
 	public static void deleteProject(String XMID,String stuId) {
 		try {
 			Connection con = DBConnection.getConnection();
-			String sql1 = "update student_baoming set BaoMingXM1=NULL,BaoMing1TG=0 where BaoMingXM1='"+XMID+"' and XueHao='"+stuId+"'";
-			String sql2 = "update student_baoming set BaoMingXM2=NULL,BaoMing2TG=0 where BaoMingXM2='"+XMID+"' and XueHao='"+stuId+"'";
+			String sql1 = "update student_baoming set BaoMingXM1=NULL,XiangMu1TG=0 where BaoMingXM1='"+XMID+"' and XueHao='"+stuId+"'";
+			String sql2 = "update student_baoming set BaoMingXM2=NULL,XiangMu2TG=0 where BaoMingXM2='"+XMID+"' and XueHao='"+stuId+"'";
 			PreparedStatement ptmt = (PreparedStatement) con.prepareStatement(sql1);
 			ptmt.execute();
 			ptmt = (PreparedStatement) con.prepareStatement(sql2);

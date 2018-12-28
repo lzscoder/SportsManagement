@@ -188,7 +188,7 @@ public class SelectScores {
 					int i = 0;
 					for(i = 0;i<back.size();i++)
 					{
-						if(list.get(0).equals(back.get(0).get(0)))
+						if(list.get(0).equals(back.get(i).get(0)))
 						{
 							//将back[i].get(1)  设置为list[1]+back[i].get(1)
 							
@@ -196,6 +196,7 @@ public class SelectScores {
 							int b = Integer.parseInt(back.get(i).get(1));
 							String str = (a+b)+"";
 							back.get(i).set(1,str);
+							break;
 						}
 					}
 					if(i==back.size())
